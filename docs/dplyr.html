@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capítulo 8 Data Wrangling | Apostila de Cálculo</title>
+  <meta name="description" content="Dizer alguma coisa" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capítulo 8 Data Wrangling | Apostila de Cálculo" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="Dizer alguma coisa" />
+  <meta name="github-repo" content="clobos/teste_bookdown" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capítulo 8 Data Wrangling | Apostila de Cálculo" />
+  
+  <meta name="twitter:description" content="Dizer alguma coisa" />
+  
+
+<meta name="author" content="Cristian Villegas" />
+
+
+<meta name="date" content="2023-02-22" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="references.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Apostila de Cálculo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#usage"><i class="fa fa-check"></i><b>1.1</b> Usage</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#render-book"><i class="fa fa-check"></i><b>1.2</b> Render book</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#preview-book"><i class="fa fa-check"></i><b>1.3</b> Preview book</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="hello-bookdown.html"><a href="hello-bookdown.html"><i class="fa fa-check"></i><b>2</b> Hello bookdown</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="hello-bookdown.html"><a href="hello-bookdown.html#a-section"><i class="fa fa-check"></i><b>2.1</b> A section</a>
+<ul>
+<li class="chapter" data-level="" data-path="hello-bookdown.html"><a href="hello-bookdown.html#an-unnumbered-section"><i class="fa fa-check"></i>An unnumbered section</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>3</b> Cross-references</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="cross.html"><a href="cross.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>3.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="3.2" data-path="cross.html"><a href="cross.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>3.2</b> Captioned figures and tables</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>4</b> Parts</a></li>
+<li class="chapter" data-level="5" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>5</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>5.1</b> Footnotes</a></li>
+<li class="chapter" data-level="5.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>5.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>6</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>6.1</b> Equations</a></li>
+<li class="chapter" data-level="6.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>6.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="6.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>6.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>7</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>7.1</b> Publishing</a></li>
+<li class="chapter" data-level="7.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>7.2</b> 404 pages</a></li>
+<li class="chapter" data-level="7.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>7.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="8" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>8</b> Data Wrangling</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="dplyr.html"><a href="dplyr.html#ilo-dplyr"><i class="fa fa-check"></i><b>8.1</b> Learning Objectives</a>
+<ul>
+<li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#basic"><i class="fa fa-check"></i>Basic</a></li>
+<li class="chapter" data-level="" data-path="dplyr.html"><a href="dplyr.html#intermediate"><i class="fa fa-check"></i>Intermediate</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="dplyr.html"><a href="dplyr.html#setup-dplyr"><i class="fa fa-check"></i><b>8.2</b> Setup</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="dplyr.html"><a href="dplyr.html#data-disgust"><i class="fa fa-check"></i><b>8.2.1</b> The <code>disgust</code> dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="dplyr.html"><a href="dplyr.html#six-main-dplyr-verbs"><i class="fa fa-check"></i><b>8.3</b> Six main dplyr verbs</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="dplyr.html"><a href="dplyr.html#select"><i class="fa fa-check"></i><b>8.3.1</b> select()</a></li>
+<li class="chapter" data-level="8.3.2" data-path="dplyr.html"><a href="dplyr.html#filter"><i class="fa fa-check"></i><b>8.3.2</b> filter()</a></li>
+<li class="chapter" data-level="8.3.3" data-path="dplyr.html"><a href="dplyr.html#arrange"><i class="fa fa-check"></i><b>8.3.3</b> arrange()</a></li>
+<li class="chapter" data-level="8.3.4" data-path="dplyr.html"><a href="dplyr.html#mutate"><i class="fa fa-check"></i><b>8.3.4</b> mutate()</a></li>
+<li class="chapter" data-level="8.3.5" data-path="dplyr.html"><a href="dplyr.html#summarise"><i class="fa fa-check"></i><b>8.3.5</b> summarise()</a></li>
+<li class="chapter" data-level="8.3.6" data-path="dplyr.html"><a href="dplyr.html#group_by"><i class="fa fa-check"></i><b>8.3.6</b> group_by()</a></li>
+<li class="chapter" data-level="8.3.7" data-path="dplyr.html"><a href="dplyr.html#all-together"><i class="fa fa-check"></i><b>8.3.7</b> All Together</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="dplyr.html"><a href="dplyr.html#additional-dplyr-one-table-verbs"><i class="fa fa-check"></i><b>8.4</b> Additional dplyr one-table verbs</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="dplyr.html"><a href="dplyr.html#rename"><i class="fa fa-check"></i><b>8.4.1</b> rename()</a></li>
+<li class="chapter" data-level="8.4.2" data-path="dplyr.html"><a href="dplyr.html#distinct"><i class="fa fa-check"></i><b>8.4.2</b> distinct()</a></li>
+<li class="chapter" data-level="8.4.3" data-path="dplyr.html"><a href="dplyr.html#count"><i class="fa fa-check"></i><b>8.4.3</b> count()</a></li>
+<li class="chapter" data-level="8.4.4" data-path="dplyr.html"><a href="dplyr.html#slice"><i class="fa fa-check"></i><b>8.4.4</b> slice()</a></li>
+<li class="chapter" data-level="8.4.5" data-path="dplyr.html"><a href="dplyr.html#pull"><i class="fa fa-check"></i><b>8.4.5</b> pull()</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="dplyr.html"><a href="dplyr.html#window"><i class="fa fa-check"></i><b>8.5</b> Window functions</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="dplyr.html"><a href="dplyr.html#ranking-functions"><i class="fa fa-check"></i><b>8.5.1</b> Ranking functions</a></li>
+<li class="chapter" data-level="8.5.2" data-path="dplyr.html"><a href="dplyr.html#offset-functions"><i class="fa fa-check"></i><b>8.5.2</b> Offset functions</a></li>
+<li class="chapter" data-level="8.5.3" data-path="dplyr.html"><a href="dplyr.html#cumulative-aggregates"><i class="fa fa-check"></i><b>8.5.3</b> Cumulative aggregates</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="dplyr.html"><a href="dplyr.html#extra-yo"><i class="fa fa-check"></i><b>8.6</b> Extra (yo)</a></li>
+<li class="chapter" data-level="8.7" data-path="dplyr.html"><a href="dplyr.html#resources-dplyr"><i class="fa fa-check"></i><b>8.7</b> Further Resources</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Apostila de Cálculo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dplyr" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Capítulo 8</span> Data Wrangling<a href="dplyr.html#dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="right meme">
+<img src="images/memes/real_world_data.jpg"
+     alt="A cute golden retriever labelled 'iris & mtcars' and a scary werewolf labelled 'Real world data'" />
+</div>
+<div id="ilo-dplyr" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Learning Objectives<a href="dplyr.html#ilo-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="basic" class="section level3 unnumbered hasAnchor">
+<h3>Basic<a href="dplyr.html#basic" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol style="list-style-type: decimal">
+<li>Be able to use the 6 main dplyr one-table verbs: <a href="https://youtu.be/l12tNKClTR0" class="video">(video)</a>
+<ul>
+<li><a href="dplyr.html#select"><code>select()</code></a></li>
+<li><a href="dplyr.html#filter"><code>filter()</code></a></li>
+<li><a href="dplyr.html#arrange"><code>arrange()</code></a></li>
+<li><a href="dplyr.html#mutate"><code>mutate()</code></a></li>
+<li><a href="dplyr.html#summarise"><code>summarise()</code></a></li>
+<li><a href="dplyr.html#group_by"><code>group_by()</code></a></li>
+</ul></li>
+<li>Be able to <a href="dplyr.html#all-together">wrangle data by chaining tidyr and dplyr functions</a> <a href="https://youtu.be/hzFFAkwrkqA" class="video">(video)</a></li>
+<li>Be able to use these additional one-table verbs: <a href="https://youtu.be/GmfF162mq4g" class="video">(video)</a>
+<ul>
+<li><a href="dplyr.html#rename"><code>rename()</code></a></li>
+<li><a href="dplyr.html#distinct"><code>distinct()</code></a></li>
+<li><a href="dplyr.html#count"><code>count()</code></a></li>
+<li><a href="dplyr.html#slice"><code>slice()</code></a></li>
+<li><a href="dplyr.html#pull"><code>pull()</code></a></li>
+</ul></li>
+</ol>
+</div>
+<div id="intermediate" class="section level3 unnumbered hasAnchor">
+<h3>Intermediate<a href="dplyr.html#intermediate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ol start="4" style="list-style-type: decimal">
+<li>Fine control of <a href="dplyr.html#select_helpers"><code>select()</code> operations</a> <a href="https://youtu.be/R1bi1QwF9t0" class="video">(video)</a></li>
+<li>Use <a href="dplyr.html#window">window functions</a> <a href="https://youtu.be/uo4b0W9mqPc" class="video">(video)</a></li>
+</ol>
+</div>
+</div>
+<div id="setup-dplyr" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Setup<a href="dplyr.html#setup-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ol style="list-style-type: decimal">
+<li>Open your <code>reprores-class-notes</code> project</li>
+<li>Create a new R Markdown file called <code>07-dplyr.Rmd</code></li>
+<li>Update the YAML header</li>
+<li>Replace the setup chunk with the one below:</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="dplyr.html#cb6-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-2"><a href="dplyr.html#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="dplyr.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># packages needed for this chapter</span></span>
+<span id="cb6-4"><a href="dplyr.html#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="dplyr.html#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb6-6"><a href="dplyr.html#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate) <span class="co"># handling dates and times</span></span>
+<span id="cb6-7"><a href="dplyr.html#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#library(reprores)  # class-specific datasets</span></span>
+<span id="cb6-8"><a href="dplyr.html#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="dplyr.html#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">8675309</span>) <span class="co"># makes sure random numbers are reproducible</span></span></code></pre></div>
+<p>Download the <a href="https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-transformation.pdf">Data transformation cheat sheet</a>.</p>
+<div id="data-disgust" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> The <code>disgust</code> dataset<a href="dplyr.html#data-disgust" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>These examples will use data from <code>reprores::disgust</code>, which contains data from the <a href="http://digitalrepository.unm.edu/cgi/viewcontent.cgi?article=1139&amp;context=psy_etds">Three Domain Disgust Scale</a>. Each participant is identified by a unique <code>user_id</code> and each questionnaire completion has a unique <code>id</code>. Look at the Help for this dataset to see the individual questions.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="dplyr.html#cb7-1" aria-hidden="true" tabindex="-1"></a>disgust <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;disgust.csv&quot;</span>)</span>
+<span id="cb7-2"><a href="dplyr.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(disgust)</span></code></pre></div>
+<pre><code>## Rows: 20,000
+## Columns: 24
+## $ id        &lt;dbl&gt; 1199, 1, 1599, 13332, 23, 1160, 7980, 552, 37829, 6902, 6158…
+## $ user_id   &lt;dbl&gt; 0, 1, 2, 2118, 2311, 3630, 4458, 4651, 4976, 5469, 6066, 609…
+## $ date      &lt;date&gt; 2008-10-07, 2008-07-10, 2008-10-27, 2012-01-02, 2008-07-15,…
+## $ moral1    &lt;dbl&gt; 5, 2, 1, 0, 4, 1, 3, 2, 6, 0, 4, 1, 1, 4, 2, 1, NA, 3, 1, 3,…
+## $ moral2    &lt;dbl&gt; 6, 2, 1, 1, 4, 5, 4, 4, 6, 1, 5, 2, 4, 4, 5, 3, NA, 5, 2, 3,…
+## $ moral3    &lt;dbl&gt; 4, 1, 1, 1, 4, NA, 3, 3, 6, 3, 6, 2, 3, 4, 4, 2, NA, 4, 3, 3…
+## $ moral4    &lt;dbl&gt; 6, 2, 1, 1, 4, 5, 4, 5, 0, 4, 5, 2, 4, 4, 6, 4, NA, 5, 2, 3,…
+## $ moral5    &lt;dbl&gt; 5, 1, NA, 1, 4, 5, 4, 5, 6, 1, 5, 1, 3, 3, 5, 5, NA, 3, 2, 3…
+## $ moral6    &lt;dbl&gt; 5, 1, NA, 2, 4, 5, 3, 5, 0, 0, 4, 2, 4, 3, 4, 4, NA, 4, 3, 0…
+## $ moral7    &lt;dbl&gt; 6, 1, 1, 1, 4, 1, 3, 3, 0, 1, 4, 1, 3, 2, 5, 4, NA, 3, 4, 3,…
+## $ sexual1   &lt;dbl&gt; 4, 3, 1, 4, 2, 0, 2, 4, 0, 3, 3, 1, 1, 4, 2, 0, NA, 1, 3, 2,…
+## $ sexual2   &lt;dbl&gt; 0, 1, NA, 3, 1, 5, 4, 2, 0, 5, 0, 0, 0, 2, 1, 0, NA, 3, 0, 0…
+## $ sexual3   &lt;dbl&gt; 1, 1, 1, 0, 2, 0, 3, 4, 0, 2, 1, 0, 0, 1, 0, 0, NA, 3, 0, 6,…
+## $ sexual4   &lt;dbl&gt; 0, 2, NA, 6, 1, 2, 2, 6, 0, 4, 6, 3, 1, 3, 2, 0, NA, 5, 2, 6…
+## $ sexual5   &lt;dbl&gt; 1, 1, 1, 0, 1, 0, 1, 6, 0, 6, 3, 0, 0, 2, 1, 0, NA, 5, 0, 2,…
+## $ sexual6   &lt;dbl&gt; 4, 2, NA, 3, 1, 1, 5, 6, 0, 6, 5, 4, 2, 3, 4, 0, NA, 3, 3, 6…
+## $ sexual7   &lt;dbl&gt; 5, 2, NA, 5, 5, 0, 4, 2, 0, 5, 3, 4, 1, 6, 3, 0, NA, 3, 5, 3…
+## $ pathogen1 &lt;dbl&gt; 6, 3, NA, 5, 5, 6, 6, 5, 6, 5, 6, 4, 4, 5, 3, 5, NA, 4, 4, 3…
+## $ pathogen2 &lt;dbl&gt; 1, 2, NA, 6, 5, 3, 4, 6, 6, 2, 5, 3, 4, 2, 3, 4, NA, 5, 4, 2…
+## $ pathogen3 &lt;dbl&gt; 6, 3, 1, 4, 4, 1, 4, 6, 6, 4, 5, 1, 3, 0, 2, 3, NA, 3, 3, 5,…
+## $ pathogen4 &lt;dbl&gt; 5, 3, NA, 6, 4, 1, 3, 4, 6, 4, 5, 1, 4, 4, 4, 1, NA, 5, 4, 0…
+## $ pathogen5 &lt;dbl&gt; 4, 2, NA, 5, 5, 3, 3, 6, 0, 2, 5, 4, 5, 5, 5, 4, NA, 4, 4, 5…
+## $ pathogen6 &lt;dbl&gt; 5, 3, NA, 5, 4, 1, 2, 1, 0, 2, 5, 1, 4, 5, 1, 2, NA, 5, 5, 5…
+## $ pathogen7 &lt;dbl&gt; 6, 3, NA, 4, 3, 0, 3, 6, 6, 6, 5, 3, 5, 4, 5, 3, NA, 5, 2, 6…</code></pre>
+</div>
+</div>
+<div id="six-main-dplyr-verbs" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Six main dplyr verbs<a href="dplyr.html#six-main-dplyr-verbs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The six main <code>dplyr</code> verbs: <code>select</code>, <code>filter</code>, <code>arrange</code>, <code>mutate</code>, <code>summarise</code>, and <code>group_by</code>.</p>
+<div id="select" class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> select()<a href="dplyr.html#select" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Select columns by name or number.</p>
+<p>You can select each column individually, separated by commas (e.g., <code>col1, col2</code>). You can also select all columns between two columns by separating them with a colon (e.g., <code>start_col:end_col</code>).</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="dplyr.html#cb9-1" aria-hidden="true" tabindex="-1"></a>moral <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span> <span class="fu">select</span>(user_id, moral1<span class="sc">:</span>moral7)</span>
+<span id="cb9-2"><a href="dplyr.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(moral)</span></code></pre></div>
+<pre><code>## [1] &quot;user_id&quot; &quot;moral1&quot;  &quot;moral2&quot;  &quot;moral3&quot;  &quot;moral4&quot;  &quot;moral5&quot;  &quot;moral6&quot; 
+## [8] &quot;moral7&quot;</code></pre>
+<p>You can select columns by number, which is useful when the column names are long or complicated.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="dplyr.html#cb11-1" aria-hidden="true" tabindex="-1"></a>sexual <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="dv">2</span>, <span class="dv">11</span><span class="sc">:</span><span class="dv">17</span>)</span>
+<span id="cb11-2"><a href="dplyr.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(sexual)</span></code></pre></div>
+<pre><code>## [1] &quot;user_id&quot; &quot;sexual1&quot; &quot;sexual2&quot; &quot;sexual3&quot; &quot;sexual4&quot; &quot;sexual5&quot; &quot;sexual6&quot;
+## [8] &quot;sexual7&quot;</code></pre>
+<p>You can use a minus symbol to unselect columns, leaving all of the other columns. If you want to exclude a span of columns, put parentheses around the span first (e.g., <code>-(moral1:moral7)</code>, not <code>-moral1:moral7</code>).</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="dplyr.html#cb13-1" aria-hidden="true" tabindex="-1"></a>pathogen <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>id, <span class="sc">-</span>date, <span class="sc">-</span>(moral1<span class="sc">:</span>sexual7))</span>
+<span id="cb13-2"><a href="dplyr.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pathogen)</span></code></pre></div>
+<pre><code>## [1] &quot;user_id&quot;   &quot;pathogen1&quot; &quot;pathogen2&quot; &quot;pathogen3&quot; &quot;pathogen4&quot; &quot;pathogen5&quot;
+## [7] &quot;pathogen6&quot; &quot;pathogen7&quot;</code></pre>
+<div id="select_helpers" class="section level4 hasAnchor" number="8.3.1.1">
+<h4><span class="header-section-number">8.3.1.1</span> Select helpers<a href="dplyr.html#select_helpers" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You can select columns based on criteria about the column names.</p>
+<div id="starts_with" class="section level5 hasAnchor" number="8.3.1.1.1">
+<h5><span class="header-section-number">8.3.1.1.1</span> <code>starts_with()</code><a href="dplyr.html#starts_with" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Select columns that start with a character string.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="dplyr.html#cb15-1" aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="st">&quot;u&quot;</span>))</span>
+<span id="cb15-2"><a href="dplyr.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(u)</span></code></pre></div>
+<pre><code>## [1] &quot;user_id&quot;</code></pre>
+</div>
+<div id="ends_with" class="section level5 hasAnchor" number="8.3.1.1.2">
+<h5><span class="header-section-number">8.3.1.1.2</span> <code>ends_with()</code><a href="dplyr.html#ends_with" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Select columns that end with a character string.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="dplyr.html#cb17-1" aria-hidden="true" tabindex="-1"></a>firstq <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">ends_with</span>(<span class="st">&quot;1&quot;</span>))</span>
+<span id="cb17-2"><a href="dplyr.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(firstq)</span></code></pre></div>
+<pre><code>## [1] &quot;moral1&quot;    &quot;sexual1&quot;   &quot;pathogen1&quot;</code></pre>
+</div>
+<div id="contains" class="section level5 hasAnchor" number="8.3.1.1.3">
+<h5><span class="header-section-number">8.3.1.1.3</span> <code>contains()</code><a href="dplyr.html#contains" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Select columns that contain a character string.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="dplyr.html#cb19-1" aria-hidden="true" tabindex="-1"></a>pathogen <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">contains</span>(<span class="st">&quot;pathogen&quot;</span>))</span>
+<span id="cb19-2"><a href="dplyr.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(pathogen)</span></code></pre></div>
+<pre><code>## [1] &quot;pathogen1&quot; &quot;pathogen2&quot; &quot;pathogen3&quot; &quot;pathogen4&quot; &quot;pathogen5&quot; &quot;pathogen6&quot;
+## [7] &quot;pathogen7&quot;</code></pre>
+</div>
+<div id="num_range" class="section level5 hasAnchor" number="8.3.1.1.4">
+<h5><span class="header-section-number">8.3.1.1.4</span> <code>num_range()</code><a href="dplyr.html#num_range" class="anchor-section" aria-label="Anchor link to header"></a></h5>
+<p>Select columns with a name that matches the pattern <code>prefix</code>.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="dplyr.html#cb21-1" aria-hidden="true" tabindex="-1"></a>moral2_4 <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="fu">num_range</span>(<span class="st">&quot;moral&quot;</span>, <span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>))</span>
+<span id="cb21-2"><a href="dplyr.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(moral2_4)</span></code></pre></div>
+<pre><code>## [1] &quot;moral2&quot; &quot;moral3&quot; &quot;moral4&quot;</code></pre>
+<div class="info">
+<p>Use <code>width</code> to set the number of digits with leading
+zeros. For example, <code>num_range('var_', 8:10, width=2)</code> selects columns <code>var_08</code>, <code>var_09</code>, and <code>var_10</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="filter" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> filter()<a href="dplyr.html#filter" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Select rows by matching column criteria.</p>
+<p>Select all rows where the user_id is 1 (that’s Lisa).</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="dplyr.html#cb23-1" aria-hidden="true" tabindex="-1"></a>disgust <span class="sc">%&gt;%</span> <span class="fu">filter</span>(user_id <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 24
+##      id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1     1       1 2008-07-10      2      2      1      2      1      1      1
+## # … with 14 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;, sexual3 &lt;dbl&gt;,
+## #   sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;</code></pre>
+<div class="warning">
+<p>Remember to use <code>==</code> and not <code>=</code> to check if two things are equivalent. A single <code>=</code> assigns the righthand value to the lefthand variable and (usually) evaluates to <code>TRUE</code>.</p>
+</div>
+<p>You can select on multiple criteria by separating them with commas.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="dplyr.html#cb25-1" aria-hidden="true" tabindex="-1"></a>amoral <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span> <span class="fu">filter</span>(</span>
+<span id="cb25-2"><a href="dplyr.html#cb25-2" aria-hidden="true" tabindex="-1"></a>  moral1 <span class="sc">==</span> <span class="dv">0</span>, </span>
+<span id="cb25-3"><a href="dplyr.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  moral2 <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb25-4"><a href="dplyr.html#cb25-4" aria-hidden="true" tabindex="-1"></a>  moral3 <span class="sc">==</span> <span class="dv">0</span>, </span>
+<span id="cb25-5"><a href="dplyr.html#cb25-5" aria-hidden="true" tabindex="-1"></a>  moral4 <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb25-6"><a href="dplyr.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  moral5 <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb25-7"><a href="dplyr.html#cb25-7" aria-hidden="true" tabindex="-1"></a>  moral6 <span class="sc">==</span> <span class="dv">0</span>,</span>
+<span id="cb25-8"><a href="dplyr.html#cb25-8" aria-hidden="true" tabindex="-1"></a>  moral7 <span class="sc">==</span> <span class="dv">0</span></span>
+<span id="cb25-9"><a href="dplyr.html#cb25-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-10"><a href="dplyr.html#cb25-10" aria-hidden="true" tabindex="-1"></a>amoral</span></code></pre></div>
+<pre><code>## # A tibble: 216 × 24
+##       id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##    &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1   710   44759 2008-08-26      0      0      0      0      0      0      0
+##  2  7036   88227 2011-01-16      0      0      0      0      0      0      0
+##  3    43  156076 2008-07-18      0      0      0      0      0      0      0
+##  4    89  156634 2008-07-22      0      0      0      0      0      0      0
+##  5    93  156722 2008-07-23      0      0      0      0      0      0      0
+##  6   170  157975 2008-08-03      0      0      0      0      0      0      0
+##  7   414  161765 2008-08-21      0      0      0      0      0      0      0
+##  8   475  162435 2008-08-22      0      0      0      0      0      0      0
+##  9   560  163796 2008-08-24      0      0      0      0      0      0      0
+## 10   638  164674 2008-08-25      0      0      0      0      0      0      0
+## # … with 206 more rows, and 14 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;,
+## #   sexual3 &lt;dbl&gt;, sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;</code></pre>
+<p>You can use the symbols <code>&amp;</code>, <code>|</code>, and <code>!</code> to mean “and”, “or”, and “not”. You can also use other operators to make equations.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="dplyr.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># everyone who chose either 0 or 7 for question moral1</span></span>
+<span id="cb27-2"><a href="dplyr.html#cb27-2" aria-hidden="true" tabindex="-1"></a>moral_extremes <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span> </span>
+<span id="cb27-3"><a href="dplyr.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(moral1 <span class="sc">==</span> <span class="dv">0</span> <span class="sc">|</span> moral1 <span class="sc">==</span> <span class="dv">7</span>)</span>
+<span id="cb27-4"><a href="dplyr.html#cb27-4" aria-hidden="true" tabindex="-1"></a>moral_extremes</span></code></pre></div>
+<pre><code>## # A tibble: 2,208 × 24
+##       id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##    &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 13332    2118 2012-01-02      0      1      1      1      1      2      1
+##  2  6902    5469 2010-12-06      0      1      3      4      1      0      1
+##  3  1772   11381 2008-11-03      0      0      0      4      0      0      0
+##  4   710   44759 2008-08-26      0      0      0      0      0      0      0
+##  5 20306   56604 2013-01-17      0      1      0      5      3      1      1
+##  6  7122   71437 2011-02-10      0      1      0      3      1      0      1
+##  7  1230   87584 2008-10-10      0      4      6      4      6      6      0
+##  8  7036   88227 2011-01-16      0      0      0      0      0      0      0
+##  9 14330   92576 2012-02-23      0      6      0      4      0      5      4
+## 10  1821  101243 2008-11-04      0      5      4      5      5      2      2
+## # … with 2,198 more rows, and 14 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;,
+## #   sexual3 &lt;dbl&gt;, sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="dplyr.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># everyone who chose the same answer for all moral questions</span></span>
+<span id="cb29-2"><a href="dplyr.html#cb29-2" aria-hidden="true" tabindex="-1"></a>moral_consistent <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="dplyr.html#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
+<span id="cb29-4"><a href="dplyr.html#cb29-4" aria-hidden="true" tabindex="-1"></a>    moral2 <span class="sc">==</span> moral1 <span class="sc">&amp;</span> </span>
+<span id="cb29-5"><a href="dplyr.html#cb29-5" aria-hidden="true" tabindex="-1"></a>    moral3 <span class="sc">==</span> moral1 <span class="sc">&amp;</span> </span>
+<span id="cb29-6"><a href="dplyr.html#cb29-6" aria-hidden="true" tabindex="-1"></a>    moral4 <span class="sc">==</span> moral1 <span class="sc">&amp;</span></span>
+<span id="cb29-7"><a href="dplyr.html#cb29-7" aria-hidden="true" tabindex="-1"></a>    moral5 <span class="sc">==</span> moral1 <span class="sc">&amp;</span></span>
+<span id="cb29-8"><a href="dplyr.html#cb29-8" aria-hidden="true" tabindex="-1"></a>    moral6 <span class="sc">==</span> moral1 <span class="sc">&amp;</span></span>
+<span id="cb29-9"><a href="dplyr.html#cb29-9" aria-hidden="true" tabindex="-1"></a>    moral7 <span class="sc">==</span> moral1</span>
+<span id="cb29-10"><a href="dplyr.html#cb29-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb29-11"><a href="dplyr.html#cb29-11" aria-hidden="true" tabindex="-1"></a>moral_consistent</span></code></pre></div>
+<pre><code>## # A tibble: 623 × 24
+##       id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##    &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1    23    2311 2008-07-15      4      4      4      4      4      4      4
+##  2 26188   34951 2014-01-04      6      6      6      6      6      6      6
+##  3   710   44759 2008-08-26      0      0      0      0      0      0      0
+##  4  2673   67077 2009-01-05      6      6      6      6      6      6      6
+##  5   152   72482 2008-07-30      6      6      6      6      6      6      6
+##  6  7036   88227 2011-01-16      0      0      0      0      0      0      0
+##  7 18898   93123 2012-11-03      6      6      6      6      6      6      6
+##  8  3560   95309 2009-05-04      5      5      5      5      5      5      5
+##  9 15649  104323 2012-05-01      6      6      6      6      6      6      6
+## 10 35250  133155 2015-07-16      6      6      6      6      6      6      6
+## # … with 613 more rows, and 14 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;,
+## #   sexual3 &lt;dbl&gt;, sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="dplyr.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># everyone who did not answer 7 for all 7 moral questions</span></span>
+<span id="cb31-2"><a href="dplyr.html#cb31-2" aria-hidden="true" tabindex="-1"></a>moral_no_ceiling <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span></span>
+<span id="cb31-3"><a href="dplyr.html#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(moral1<span class="sc">+</span>moral2<span class="sc">+</span>moral3<span class="sc">+</span>moral4<span class="sc">+</span>moral5<span class="sc">+</span>moral6<span class="sc">+</span>moral7 <span class="sc">!=</span> <span class="dv">7</span><span class="sc">*</span><span class="dv">7</span>)</span>
+<span id="cb31-4"><a href="dplyr.html#cb31-4" aria-hidden="true" tabindex="-1"></a>moral_no_ceiling</span></code></pre></div>
+<pre><code>## # A tibble: 19,224 × 24
+##       id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##    &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1  1199       0 2008-10-07      5      6      4      6      5      5      6
+##  2     1       1 2008-07-10      2      2      1      2      1      1      1
+##  3 13332    2118 2012-01-02      0      1      1      1      1      2      1
+##  4    23    2311 2008-07-15      4      4      4      4      4      4      4
+##  5  7980    4458 2011-09-05      3      4      3      4      4      3      3
+##  6   552    4651 2008-08-23      2      4      3      5      5      5      3
+##  7 37829    4976 2016-03-22      6      6      6      0      6      0      0
+##  8  6902    5469 2010-12-06      0      1      3      4      1      0      1
+##  9  6158    6066 2010-04-18      4      5      6      5      5      4      4
+## 10  4850    6093 2009-11-09      1      2      2      2      1      2      1
+## # … with 19,214 more rows, and 14 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;,
+## #   sexual3 &lt;dbl&gt;, sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;</code></pre>
+<div id="match-operator" class="section level4 hasAnchor" number="8.3.2.1">
+<h4><span class="header-section-number">8.3.2.1</span> Match operator (%in%)<a href="dplyr.html#match-operator" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Sometimes you need to exclude some participant IDs for reasons that can’t be described in code. The match operator (<code>%in%</code>) is useful here for testing if a column value is in a list. Surround the equation with parentheses and put <code>!</code> in front to test that a value is not in the list.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="dplyr.html#cb33-1" aria-hidden="true" tabindex="-1"></a>no_researchers <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="dplyr.html#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(user_id <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)))</span>
+<span id="cb33-3"><a href="dplyr.html#cb33-3" aria-hidden="true" tabindex="-1"></a>no_researchers</span></code></pre></div>
+<pre><code>## # A tibble: 19,998 × 24
+##       id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##    &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1  1199       0 2008-10-07      5      6      4      6      5      5      6
+##  2 13332    2118 2012-01-02      0      1      1      1      1      2      1
+##  3    23    2311 2008-07-15      4      4      4      4      4      4      4
+##  4  1160    3630 2008-10-06      1      5     NA      5      5      5      1
+##  5  7980    4458 2011-09-05      3      4      3      4      4      3      3
+##  6   552    4651 2008-08-23      2      4      3      5      5      5      3
+##  7 37829    4976 2016-03-22      6      6      6      0      6      0      0
+##  8  6902    5469 2010-12-06      0      1      3      4      1      0      1
+##  9  6158    6066 2010-04-18      4      5      6      5      5      4      4
+## 10  4850    6093 2009-11-09      1      2      2      2      1      2      1
+## # … with 19,988 more rows, and 14 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;,
+## #   sexual3 &lt;dbl&gt;, sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;</code></pre>
+</div>
+<div id="dates" class="section level4 hasAnchor" number="8.3.2.2">
+<h4><span class="header-section-number">8.3.2.2</span> Dates<a href="dplyr.html#dates" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>You can use the <code>lubridate</code> package to work with dates. For example, you can use the <code>year()</code> function to return just the year from the <code>date</code> column and then select only data collected in 2010.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="dplyr.html#cb35-1" aria-hidden="true" tabindex="-1"></a>disgust2010 <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span></span>
+<span id="cb35-2"><a href="dplyr.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">year</span>(date) <span class="sc">==</span> <span class="dv">2010</span>)</span>
+<span id="cb35-3"><a href="dplyr.html#cb35-3" aria-hidden="true" tabindex="-1"></a>disgust2010</span></code></pre></div>
+<pre><code>## # A tibble: 1,514 × 24
+##       id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##    &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1  6902    5469 2010-12-06      0      1      3      4      1      0      1
+##  2  6158    6066 2010-04-18      4      5      6      5      5      4      4
+##  3  6362    7129 2010-06-09      4      4      4      4      3      3      2
+##  4  6302   39318 2010-05-20      2      4      1      4      5      6      0
+##  5  5429   43029 2010-01-02      1      1      1      3      6      4      2
+##  6  6732   71955 2010-10-15      2      5      3      6      3      2      5
+##  7  6367   84622 2010-06-13      4      6      6      6      6      6      6
+##  8  6476   93120 2010-07-12      3      6      4      6      5      3      4
+##  9  5778   96537 2010-03-05      5      5      3      4      5      5      5
+## 10  6181  131633 2010-04-23      0      6      4      6      0      6      6
+## # … with 1,504 more rows, and 14 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;,
+## #   sexual3 &lt;dbl&gt;, sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="dplyr.html#cb37-1" aria-hidden="true" tabindex="-1"></a>disgust <span class="sc">%&gt;%</span></span>
+<span id="cb37-2"><a href="dplyr.html#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">month</span>(date) <span class="sc">==</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href="dplyr.html#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 24
+##      id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1  1199       0 2008-10-07      5      6      4      6      5      5      6
+## 2  1599       2 2008-10-27      1      1      1      1     NA     NA      1
+## 3  1160    3630 2008-10-06      1      5     NA      5      5      5      1
+## 4  1134    6172 2008-10-05      1      4      3      4      3      4      3
+## 5 11322   11395 2011-10-31      1      5      4      4      5      3      4
+## 6 10307   12820 2011-10-02      4      4      2      4      4      4      4
+## # … with 14 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;, sexual3 &lt;dbl&gt;,
+## #   sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="dplyr.html#cb39-1" aria-hidden="true" tabindex="-1"></a>disgust <span class="sc">%&gt;%</span></span>
+<span id="cb39-2"><a href="dplyr.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">day</span>(date) <span class="sc">==</span> <span class="dv">01</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="dplyr.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 24
+##      id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1  2353   37579 2008-12-01      6      6      5      6      6      6      5
+## 2  3455   53597 2009-05-01      3      5      3      4      6      2      5
+## 3 21592   74780 2013-04-01      3      4      3      5      3      4      4
+## 4 28321   89355 2014-04-01      5      5      5      3      6      4      5
+## 5   163  100115 2008-08-01      2      4      1      2      4      5      2
+## 6 15649  104323 2012-05-01      6      6      6      6      6      6      6
+## # … with 14 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;, sexual3 &lt;dbl&gt;,
+## #   sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="dplyr.html#cb41-1" aria-hidden="true" tabindex="-1"></a>disgust <span class="sc">%&gt;%</span></span>
+<span id="cb41-2"><a href="dplyr.html#cb41-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">year</span>(date) <span class="sc">==</span> <span class="dv">2010</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-3"><a href="dplyr.html#cb41-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 24
+##      id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##   &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+## 1  6902    5469 2010-12-06      0      1      3      4      1      0      1
+## 2  6158    6066 2010-04-18      4      5      6      5      5      4      4
+## 3  6362    7129 2010-06-09      4      4      4      4      3      3      2
+## 4  6302   39318 2010-05-20      2      4      1      4      5      6      0
+## 5  5429   43029 2010-01-02      1      1      1      3      6      4      2
+## 6  6732   71955 2010-10-15      2      5      3      6      3      2      5
+## # … with 14 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;, sexual3 &lt;dbl&gt;,
+## #   sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="dplyr.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dmy(200223)</span></span></code></pre></div>
+<p>Or select data from at least 5 years ago. You can use the <code>range</code> function to check the minimum and maximum dates in the resulting dataset.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="dplyr.html#cb44-1" aria-hidden="true" tabindex="-1"></a>disgust_5ago <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span></span>
+<span id="cb44-2"><a href="dplyr.html#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(date <span class="sc">&lt;</span> <span class="fu">today</span>() <span class="sc">-</span> <span class="fu">dyears</span>(<span class="dv">5</span>))</span>
+<span id="cb44-3"><a href="dplyr.html#cb44-3" aria-hidden="true" tabindex="-1"></a>disgust_5ago</span></code></pre></div>
+<pre><code>## # A tibble: 20,000 × 24
+##       id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##    &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1  1199       0 2008-10-07      5      6      4      6      5      5      6
+##  2     1       1 2008-07-10      2      2      1      2      1      1      1
+##  3  1599       2 2008-10-27      1      1      1      1     NA     NA      1
+##  4 13332    2118 2012-01-02      0      1      1      1      1      2      1
+##  5    23    2311 2008-07-15      4      4      4      4      4      4      4
+##  6  1160    3630 2008-10-06      1      5     NA      5      5      5      1
+##  7  7980    4458 2011-09-05      3      4      3      4      4      3      3
+##  8   552    4651 2008-08-23      2      4      3      5      5      5      3
+##  9 37829    4976 2016-03-22      6      6      6      0      6      0      0
+## 10  6902    5469 2010-12-06      0      1      3      4      1      0      1
+## # … with 19,990 more rows, and 14 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;,
+## #   sexual3 &lt;dbl&gt;, sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="dplyr.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(disgust_5ago<span class="sc">$</span>date)</span></code></pre></div>
+<pre><code>## [1] &quot;2008-07-10&quot; &quot;2017-08-21&quot;</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="dplyr.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">today</span>()</span></code></pre></div>
+<pre><code>## [1] &quot;2023-02-22&quot;</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="dplyr.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dyears</span>(<span class="dv">5</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;157788000s (~5 years)&quot;</code></pre>
+</div>
+</div>
+<div id="arrange" class="section level3 hasAnchor" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> arrange()<a href="dplyr.html#arrange" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Sort your dataset using <code>arrange()</code>. You will find yourself needing to sort data in R much less than you do in Excel, since you don’t need to have rows next to each other in order to, for example, calculate group means. But <code>arrange()</code> can be useful when preparing data from display in tables.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="dplyr.html#cb52-1" aria-hidden="true" tabindex="-1"></a>disgust_order <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span></span>
+<span id="cb52-2"><a href="dplyr.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(date, moral1)</span>
+<span id="cb52-3"><a href="dplyr.html#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="dplyr.html#cb52-4" aria-hidden="true" tabindex="-1"></a>disgust_order</span></code></pre></div>
+<pre><code>## # A tibble: 20,000 × 24
+##       id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##    &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1     1       1 2008-07-10      2      2      1      2      1      1      1
+##  2     3  155324 2008-07-11      2      4      3      5      2      1      4
+##  3     6  155386 2008-07-12      2      4      0      4      0      0      0
+##  4     7  155409 2008-07-12      4      5      5      4      5      1      5
+##  5     4  155366 2008-07-12      6      6      6      3      6      6      6
+##  6     5  155370 2008-07-12      6      6      4      6      6      6      6
+##  7    14  155129 2008-07-13      2      6      0      5      2      0      2
+##  8     8  155427 2008-07-13      2      5      2      6      3      2      3
+##  9    10  155429 2008-07-13      2      6      4      6      0      5      3
+## 10     9  155425 2008-07-13      3      6      3      5      6      3      5
+## # … with 19,990 more rows, and 14 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;,
+## #   sexual3 &lt;dbl&gt;, sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;</code></pre>
+<p>Reverse the order using <code>desc()</code></p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="dplyr.html#cb54-1" aria-hidden="true" tabindex="-1"></a>disgust_order_desc <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="dplyr.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(date))</span>
+<span id="cb54-3"><a href="dplyr.html#cb54-3" aria-hidden="true" tabindex="-1"></a>disgust_order_desc</span></code></pre></div>
+<pre><code>## # A tibble: 20,000 × 24
+##       id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##    &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1 39456  356866 2017-08-21      1      1      1      1      1      1      1
+##  2 39447  128727 2017-08-13      2      4      1      2      2      5      3
+##  3 39371  152955 2017-06-13      6      6      3      6      6      6      6
+##  4 39342   48303 2017-05-22      4      5      4      4      6      4      5
+##  5 39159  151633 2017-04-04      4      5      6      5      3      6      2
+##  6 38942  370464 2017-02-01      1      5      0      6      5      5      5
+##  7 38710  453237 2016-11-24      0      0      0      0      0      0      0
+##  8 38359  449337 2016-09-20      6      6      6      5      6      4      5
+##  9 38222   51771 2016-08-04      2      6      4      6      6      5      4
+## 10 38020  452964 2016-05-22      2      6      4      6      6      3      6
+## # … with 19,990 more rows, and 14 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;,
+## #   sexual3 &lt;dbl&gt;, sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;</code></pre>
+</div>
+<div id="mutate" class="section level3 hasAnchor" number="8.3.4">
+<h3><span class="header-section-number">8.3.4</span> mutate()<a href="dplyr.html#mutate" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Add new columns. This is one of the most useful functions in the tidyverse.</p>
+<p>Refer to other columns by their names (unquoted). You can add more than one column in the same mutate function, just separate the columns with a comma. Once you make a new column, you can use it in further column definitions e.g., <code>total</code> below).</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="dplyr.html#cb56-1" aria-hidden="true" tabindex="-1"></a>disgust_total <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span></span>
+<span id="cb56-2"><a href="dplyr.html#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb56-3"><a href="dplyr.html#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">pathogen =</span> pathogen1 <span class="sc">+</span> pathogen2 <span class="sc">+</span> pathogen3 <span class="sc">+</span> pathogen4 <span class="sc">+</span> pathogen5 <span class="sc">+</span> pathogen6 <span class="sc">+</span> pathogen7,</span>
+<span id="cb56-4"><a href="dplyr.html#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">moral =</span> moral1 <span class="sc">+</span> moral2 <span class="sc">+</span> moral3 <span class="sc">+</span> moral4 <span class="sc">+</span> moral5 <span class="sc">+</span> moral6 <span class="sc">+</span> moral7,</span>
+<span id="cb56-5"><a href="dplyr.html#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">sexual =</span> sexual1 <span class="sc">+</span> sexual2 <span class="sc">+</span> sexual3 <span class="sc">+</span> sexual4 <span class="sc">+</span> sexual5 <span class="sc">+</span> sexual6 <span class="sc">+</span> sexual7,</span>
+<span id="cb56-6"><a href="dplyr.html#cb56-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">total =</span> pathogen <span class="sc">+</span> moral <span class="sc">+</span> sexual,</span>
+<span id="cb56-7"><a href="dplyr.html#cb56-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">user_id =</span> <span class="fu">paste0</span>(<span class="st">&quot;U&quot;</span>, user_id)</span>
+<span id="cb56-8"><a href="dplyr.html#cb56-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb56-9"><a href="dplyr.html#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-10"><a href="dplyr.html#cb56-10" aria-hidden="true" tabindex="-1"></a>disgust_total</span></code></pre></div>
+<pre><code>## # A tibble: 20,000 × 28
+##       id user_id date       moral1 moral2 moral3 moral4 moral5 moral6 moral7
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;date&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+##  1  1199 U0      2008-10-07      5      6      4      6      5      5      6
+##  2     1 U1      2008-07-10      2      2      1      2      1      1      1
+##  3  1599 U2      2008-10-27      1      1      1      1     NA     NA      1
+##  4 13332 U2118   2012-01-02      0      1      1      1      1      2      1
+##  5    23 U2311   2008-07-15      4      4      4      4      4      4      4
+##  6  1160 U3630   2008-10-06      1      5     NA      5      5      5      1
+##  7  7980 U4458   2011-09-05      3      4      3      4      4      3      3
+##  8   552 U4651   2008-08-23      2      4      3      5      5      5      3
+##  9 37829 U4976   2016-03-22      6      6      6      0      6      0      0
+## 10  6902 U5469   2010-12-06      0      1      3      4      1      0      1
+## # … with 19,990 more rows, and 18 more variables: sexual1 &lt;dbl&gt;, sexual2 &lt;dbl&gt;,
+## #   sexual3 &lt;dbl&gt;, sexual4 &lt;dbl&gt;, sexual5 &lt;dbl&gt;, sexual6 &lt;dbl&gt;, sexual7 &lt;dbl&gt;,
+## #   pathogen1 &lt;dbl&gt;, pathogen2 &lt;dbl&gt;, pathogen3 &lt;dbl&gt;, pathogen4 &lt;dbl&gt;,
+## #   pathogen5 &lt;dbl&gt;, pathogen6 &lt;dbl&gt;, pathogen7 &lt;dbl&gt;, pathogen &lt;dbl&gt;,
+## #   moral &lt;dbl&gt;, sexual &lt;dbl&gt;, total &lt;dbl&gt;</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="dplyr.html#cb58-1" aria-hidden="true" tabindex="-1"></a>disgust_total <span class="sc">%&gt;%</span> </span>
+<span id="cb58-2"><a href="dplyr.html#cb58-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(pathogen, moral, sexual, total)</span></code></pre></div>
+<pre><code>## # A tibble: 20,000 × 4
+##    pathogen moral sexual total
+##       &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+##  1       33    37     15    85
+##  2       19    10     12    41
+##  3       NA    NA     NA    NA
+##  4       35     7     21    63
+##  5       30    28     13    71
+##  6       15    NA      8    NA
+##  7       25    24     21    70
+##  8       34    27     30    91
+##  9       30    24      0    54
+## 10       25    10     31    66
+## # … with 19,990 more rows</code></pre>
+<div class="warning">
+<p>You can overwrite a column by giving a new column the same name as the old column (see <code>user_id</code>) above. Make sure that you mean to do this and that you aren’t trying to use the old column value after you redefine it.</p>
+</div>
+</div>
+<div id="summarise" class="section level3 hasAnchor" number="8.3.5">
+<h3><span class="header-section-number">8.3.5</span> summarise()<a href="dplyr.html#summarise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Create summary statistics for the dataset. Check the <a href="https://www.rstudio.org/links/data_wrangling_cheat_sheet">Data Wrangling Cheat Sheet</a> or the <a href="https://github.com/rstudio/cheatsheets/raw/master/source/pdfs/data-transformation-cheatsheet.pdf">Data Transformation Cheat Sheet</a> for various summary functions. Some common ones are: <code>mean()</code>, <code>sd()</code>, <code>n()</code>, <code>sum()</code>, and <code>quantile()</code>.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="dplyr.html#cb60-1" aria-hidden="true" tabindex="-1"></a>disgust_summary<span class="ot">&lt;-</span> disgust_total <span class="sc">%&gt;%</span></span>
+<span id="cb60-2"><a href="dplyr.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb60-3"><a href="dplyr.html#cb60-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb60-4"><a href="dplyr.html#cb60-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">q25 =</span> <span class="fu">quantile</span>(total, .<span class="dv">25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb60-5"><a href="dplyr.html#cb60-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">q50 =</span> <span class="fu">quantile</span>(total, .<span class="dv">50</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb60-6"><a href="dplyr.html#cb60-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">q75 =</span> <span class="fu">quantile</span>(total, .<span class="dv">75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb60-7"><a href="dplyr.html#cb60-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_total =</span> <span class="fu">mean</span>(total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb60-8"><a href="dplyr.html#cb60-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_total  =</span> <span class="fu">sd</span>(total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb60-9"><a href="dplyr.html#cb60-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_total =</span> <span class="fu">min</span>(total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb60-10"><a href="dplyr.html#cb60-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_total =</span> <span class="fu">max</span>(total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb60-11"><a href="dplyr.html#cb60-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb60-12"><a href="dplyr.html#cb60-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-13"><a href="dplyr.html#cb60-13" aria-hidden="true" tabindex="-1"></a>disgust_summary</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 8
+##       n   q25   q50   q75 avg_total sd_total min_total max_total
+##   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+## 1 20000    59    71    83      70.7     18.2         0       126</code></pre>
+</div>
+<div id="group_by" class="section level3 hasAnchor" number="8.3.6">
+<h3><span class="header-section-number">8.3.6</span> group_by()<a href="dplyr.html#group_by" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Create subsets of the data. You can use this to create summaries,
+like the mean value for all of your experimental groups.</p>
+<p>Here, we’ll use <code>mutate</code> to create a new column called <code>year</code>, group by <code>year</code>, and calculate the average scores.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="dplyr.html#cb62-1" aria-hidden="true" tabindex="-1"></a>disgust_groups <span class="ot">&lt;-</span> disgust_total <span class="sc">%&gt;%</span></span>
+<span id="cb62-2"><a href="dplyr.html#cb62-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(date)) <span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a href="dplyr.html#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb62-4"><a href="dplyr.html#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb62-5"><a href="dplyr.html#cb62-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb62-6"><a href="dplyr.html#cb62-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_total =</span> <span class="fu">mean</span>(total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb62-7"><a href="dplyr.html#cb62-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_total  =</span> <span class="fu">sd</span>(total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb62-8"><a href="dplyr.html#cb62-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_total =</span> <span class="fu">min</span>(total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb62-9"><a href="dplyr.html#cb62-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_total =</span> <span class="fu">max</span>(total, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb62-10"><a href="dplyr.html#cb62-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span></span>
+<span id="cb62-11"><a href="dplyr.html#cb62-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb62-12"><a href="dplyr.html#cb62-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-13"><a href="dplyr.html#cb62-13" aria-hidden="true" tabindex="-1"></a>disgust_groups</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 6
+##     year     n avg_total sd_total min_total max_total
+##    &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+##  1  2008  2578      70.3     18.5         0       126
+##  2  2009  2580      69.7     18.6         3       126
+##  3  2010  1514      70.6     18.9         6       126
+##  4  2011  6046      71.3     17.8         0       126
+##  5  2012  5938      70.4     18.4         0       126
+##  6  2013  1251      71.6     17.6         0       126
+##  7  2014    58      70.5     17.2        19       113
+##  8  2015    21      74.3     16.9        43       107
+##  9  2016     8      67.9     32.6         0       110
+## 10  2017     6      57.2     27.9        21        90</code></pre>
+<p>`</p>
+<div class="warning">
+<p>If you don’t add <code>.groups = "drop"</code> at the end of the <code>summarise()</code> function, you will get the following message: “<code>summarise()</code> ungrouping output (override with <code>.groups</code> argument)”. This just reminds you that the groups are still in effect and any further functions will also be grouped.</p>
+<p>Older versions of dplyr didn’t do this, so older code will generate this warning if you run it with newer version of dplyr. Older code might <code>ungroup()</code> after <code>summarise()</code> to indicate that groupings should be dropped. The default behaviour is usually correct, so you don’t need to worry, but it’s best to explicitly set <code>.groups</code> in a <code>summarise()</code> function after <code>group_by()</code> if you want to “keep” or “drop” the groupings.</p>
+</div>
+<p>You can use <code>filter</code> after <code>group_by</code>. The following example returns the lowest total score from each year (i.e., the row where the <code>rank()</code> of the value in the column <code>total</code> is equivalent to <code>1</code>).</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="dplyr.html#cb64-1" aria-hidden="true" tabindex="-1"></a>disgust_lowest <span class="ot">&lt;-</span> disgust_total <span class="sc">%&gt;%</span></span>
+<span id="cb64-2"><a href="dplyr.html#cb64-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">year</span>(date)) <span class="sc">%&gt;%</span></span>
+<span id="cb64-3"><a href="dplyr.html#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(user_id, year, total) <span class="sc">%&gt;%</span></span>
+<span id="cb64-4"><a href="dplyr.html#cb64-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb64-5"><a href="dplyr.html#cb64-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">rank</span>(total) <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb64-6"><a href="dplyr.html#cb64-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(year)</span>
+<span id="cb64-7"><a href="dplyr.html#cb64-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-8"><a href="dplyr.html#cb64-8" aria-hidden="true" tabindex="-1"></a>disgust_lowest</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 3
+## # Groups:   year [7]
+##   user_id  year total
+##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 U236585  2009     3
+## 2 U292359  2010     6
+## 3 U245384  2013     0
+## 4 U206293  2014    19
+## 5 U407089  2015    43
+## 6 U453237  2016     0
+## 7 U356866  2017    21</code></pre>
+<p>You can also use <code>mutate</code> after <code>group_by</code>. The following example calculates subject-mean-centered scores by grouping the scores by <code>user_id</code> and then subtracting the group-specific mean from each score. <span class="text-warning">Note the use of <code>gather</code> to tidy the data into a long format first.</span></p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="dplyr.html#cb66-1" aria-hidden="true" tabindex="-1"></a>disgust_smc <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span></span>
+<span id="cb66-2"><a href="dplyr.html#cb66-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">&quot;question&quot;</span>, <span class="st">&quot;score&quot;</span>, moral1<span class="sc">:</span>pathogen7) <span class="sc">%&gt;%</span></span>
+<span id="cb66-3"><a href="dplyr.html#cb66-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(user_id) <span class="sc">%&gt;%</span></span>
+<span id="cb66-4"><a href="dplyr.html#cb66-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">score_smc =</span> score <span class="sc">-</span> <span class="fu">mean</span>(score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb66-5"><a href="dplyr.html#cb66-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
+<span id="cb66-6"><a href="dplyr.html#cb66-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-7"><a href="dplyr.html#cb66-7" aria-hidden="true" tabindex="-1"></a>disgust_smc </span></code></pre></div>
+<pre><code>## # A tibble: 420,000 × 6
+##       id user_id date       question score score_smc
+##    &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+##  1  1199       0 2008-10-07 moral1       5    0.952 
+##  2     1       1 2008-07-10 moral1       2    0.0476
+##  3  1599       2 2008-10-27 moral1       1    0     
+##  4 13332    2118 2012-01-02 moral1       0   -3     
+##  5    23    2311 2008-07-15 moral1       4    0.619 
+##  6  1160    3630 2008-10-06 moral1       1   -1.25  
+##  7  7980    4458 2011-09-05 moral1       3   -0.333 
+##  8   552    4651 2008-08-23 moral1       2   -2.33  
+##  9 37829    4976 2016-03-22 moral1       6    3.43  
+## 10  6902    5469 2010-12-06 moral1       0   -3.14  
+## # … with 419,990 more rows</code></pre>
+<div class="warning">
+<p>Use <code>ungroup()</code> as soon as you are done with grouped functions, otherwise the data table will still be grouped when you use it in the future.</p>
+</div>
+</div>
+<div id="all-together" class="section level3 hasAnchor" number="8.3.7">
+<h3><span class="header-section-number">8.3.7</span> All Together<a href="dplyr.html#all-together" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A lot of what we did above would be easier if the data were tidy, so let’s do that first. Then we can use <code>group_by</code> to calculate the domain scores.</p>
+<p>After that, we can spread out the 3 domains, calculate the total score, remove any rows with a missing (<code>NA</code>) total, and calculate mean values by year.</p>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="dplyr.html#cb68-1" aria-hidden="true" tabindex="-1"></a>disgust_tidy <span class="ot">&lt;-</span> disgust <span class="sc">%&gt;%</span></span>
+<span id="cb68-2"><a href="dplyr.html#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(<span class="st">&quot;question&quot;</span>, <span class="st">&quot;score&quot;</span>, moral1<span class="sc">:</span>pathogen7) <span class="sc">%&gt;%</span></span>
+<span id="cb68-3"><a href="dplyr.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">separate</span>(question, <span class="fu">c</span>(<span class="st">&quot;domain&quot;</span>,<span class="st">&quot;q_num&quot;</span>), <span class="at">sep =</span> <span class="sc">-</span><span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb68-4"><a href="dplyr.html#cb68-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(id, user_id, date, domain) <span class="sc">%&gt;%</span></span>
+<span id="cb68-5"><a href="dplyr.html#cb68-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">score =</span> <span class="fu">mean</span>(score), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span>
+<span id="cb68-6"><a href="dplyr.html#cb68-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-7"><a href="dplyr.html#cb68-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb68-8"><a href="dplyr.html#cb68-8" aria-hidden="true" tabindex="-1"></a>disgust_tidy</span></code></pre></div>
+<pre><code>## # A tibble: 60,000 × 5
+##       id user_id date       domain   score
+##    &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;     &lt;chr&gt;    &lt;dbl&gt;
+##  1     1       1 2008-07-10 moral    1.43 
+##  2     1       1 2008-07-10 pathogen 2.71 
+##  3     1       1 2008-07-10 sexual   1.71 
+##  4     3  155324 2008-07-11 moral    3    
+##  5     3  155324 2008-07-11 pathogen 2.57 
+##  6     3  155324 2008-07-11 sexual   1.86 
+##  7     4  155366 2008-07-12 moral    5.57 
+##  8     4  155366 2008-07-12 pathogen 4    
+##  9     4  155366 2008-07-12 sexual   0.429
+## 10     5  155370 2008-07-12 moral    5.71 
+## # … with 59,990 more rows</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="dplyr.html#cb70-1" aria-hidden="true" tabindex="-1"></a>disgust_scored <span class="ot">&lt;-</span> disgust_tidy <span class="sc">%&gt;%</span></span>
+<span id="cb70-2"><a href="dplyr.html#cb70-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">spread</span>(domain, score) <span class="sc">%&gt;%</span></span>
+<span id="cb70-3"><a href="dplyr.html#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb70-4"><a href="dplyr.html#cb70-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">total =</span> moral <span class="sc">+</span> sexual <span class="sc">+</span> pathogen,</span>
+<span id="cb70-5"><a href="dplyr.html#cb70-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">year =</span> <span class="fu">year</span>(date)</span>
+<span id="cb70-6"><a href="dplyr.html#cb70-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb70-7"><a href="dplyr.html#cb70-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(total)) <span class="sc">%&gt;%</span></span>
+<span id="cb70-8"><a href="dplyr.html#cb70-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(user_id) </span>
+<span id="cb70-9"><a href="dplyr.html#cb70-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-10"><a href="dplyr.html#cb70-10" aria-hidden="true" tabindex="-1"></a>disgust_scored</span></code></pre></div>
+<pre><code>## # A tibble: 18,490 × 8
+##       id user_id date       moral pathogen sexual total  year
+##    &lt;dbl&gt;   &lt;dbl&gt; &lt;date&gt;     &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+##  1  1199       0 2008-10-07  5.29     4.71   2.14 12.1   2008
+##  2     1       1 2008-07-10  1.43     2.71   1.71  5.86  2008
+##  3 13332    2118 2012-01-02  1        5      3     9     2012
+##  4    23    2311 2008-07-15  4        4.29   1.86 10.1   2008
+##  5  7980    4458 2011-09-05  3.43     3.57   3    10     2011
+##  6   552    4651 2008-08-23  3.86     4.86   4.29 13     2008
+##  7 37829    4976 2016-03-22  3.43     4.29   0     7.71  2016
+##  8  6902    5469 2010-12-06  1.43     3.57   4.43  9.43  2010
+##  9  6158    6066 2010-04-18  4.71     5.14   3    12.9   2010
+## 10  4850    6093 2009-11-09  1.57     2.43   1.71  5.71  2009
+## # … with 18,480 more rows</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="dplyr.html#cb72-1" aria-hidden="true" tabindex="-1"></a>disgust_summarised <span class="ot">&lt;-</span> disgust_scored <span class="sc">%&gt;%</span></span>
+<span id="cb72-2"><a href="dplyr.html#cb72-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb72-3"><a href="dplyr.html#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb72-4"><a href="dplyr.html#cb72-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb72-5"><a href="dplyr.html#cb72-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_pathogen =</span> <span class="fu">mean</span>(pathogen),</span>
+<span id="cb72-6"><a href="dplyr.html#cb72-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_moral =</span> <span class="fu">mean</span>(moral),</span>
+<span id="cb72-7"><a href="dplyr.html#cb72-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">avg_sexual =</span> <span class="fu">mean</span>(sexual),</span>
+<span id="cb72-8"><a href="dplyr.html#cb72-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">first_user =</span> <span class="fu">first</span>(user_id),</span>
+<span id="cb72-9"><a href="dplyr.html#cb72-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">last_user =</span> <span class="fu">last</span>(user_id),</span>
+<span id="cb72-10"><a href="dplyr.html#cb72-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span></span>
+<span id="cb72-11"><a href="dplyr.html#cb72-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb72-12"><a href="dplyr.html#cb72-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb72-13"><a href="dplyr.html#cb72-13" aria-hidden="true" tabindex="-1"></a>disgust_summarised</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 7
+##     year     n avg_pathogen avg_moral avg_sexual first_user last_user
+##    &lt;dbl&gt; &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;
+##  1  2008  2392         3.70      3.81       2.54          0    188708
+##  2  2009  2410         3.67      3.76       2.53       6093    251959
+##  3  2010  1418         3.73      3.84       2.51       5469    319641
+##  4  2011  5586         3.76      3.81       2.63       4458    406569
+##  5  2012  5375         3.74      3.77       2.55       2118    458194
+##  6  2013  1222         3.77      3.91       2.55       7646    462428
+##  7  2014    54         3.76      4          2.31      11090    461307
+##  8  2015    19         3.78      4.45       2.38     102699    460283
+##  9  2016     8         3.70      3.62       2.38       4976    453237
+## 10  2017     6         3.07      3.69       1.40      48303    370464</code></pre>
+</div>
+</div>
+<div id="additional-dplyr-one-table-verbs" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Additional dplyr one-table verbs<a href="dplyr.html#additional-dplyr-one-table-verbs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Use the code examples below and the help pages to figure out what the following one-table verbs do. Most have pretty self-explanatory names.</p>
+<div id="rename" class="section level3 hasAnchor" number="8.4.1">
+<h3><span class="header-section-number">8.4.1</span> rename()<a href="dplyr.html#rename" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>You can rename columns with <code>rename()</code>. Set the argument name to the new name, and the value to the old name. You need to put a name in quotes or backticks if it doesn’t follow the rules for a good variable name (contains only letter, numbers, underscores, and full stops; and doesn’t start with a number).</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="dplyr.html#cb74-1" aria-hidden="true" tabindex="-1"></a>sw <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span></span>
+<span id="cb74-2"><a href="dplyr.html#cb74-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Name =</span> name,</span>
+<span id="cb74-3"><a href="dplyr.html#cb74-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">Height =</span> height,</span>
+<span id="cb74-4"><a href="dplyr.html#cb74-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">Mass =</span> mass,</span>
+<span id="cb74-5"><a href="dplyr.html#cb74-5" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Hair Colour</span><span class="st">`</span> <span class="ot">=</span> hair_color,</span>
+<span id="cb74-6"><a href="dplyr.html#cb74-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Skin Colour</span><span class="st">`</span> <span class="ot">=</span> skin_color,</span>
+<span id="cb74-7"><a href="dplyr.html#cb74-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Eye Colour</span><span class="st">`</span> <span class="ot">=</span> eye_color,</span>
+<span id="cb74-8"><a href="dplyr.html#cb74-8" aria-hidden="true" tabindex="-1"></a>         <span class="st">`</span><span class="at">Birth Year</span><span class="st">`</span> <span class="ot">=</span> birth_year)</span>
+<span id="cb74-9"><a href="dplyr.html#cb74-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-10"><a href="dplyr.html#cb74-10" aria-hidden="true" tabindex="-1"></a>sw</span></code></pre></div>
+<pre><code>## # A tibble: 87 × 14
+##    Name        Height  Mass Hair …¹ Skin …² Eye C…³ Birth…⁴ sex   gender homew…⁵
+##    &lt;chr&gt;        &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
+##  1 Luke Skywa…    172    77 blond   fair    blue       19   male  mascu… Tatooi…
+##  2 C-3PO          167    75 &lt;NA&gt;    gold    yellow    112   none  mascu… Tatooi…
+##  3 R2-D2           96    32 &lt;NA&gt;    white,… red        33   none  mascu… Naboo  
+##  4 Darth Vader    202   136 none    white   yellow     41.9 male  mascu… Tatooi…
+##  5 Leia Organa    150    49 brown   light   brown      19   fema… femin… Aldera…
+##  6 Owen Lars      178   120 brown,… light   blue       52   male  mascu… Tatooi…
+##  7 Beru White…    165    75 brown   light   blue       47   fema… femin… Tatooi…
+##  8 R5-D4           97    32 &lt;NA&gt;    white,… red        NA   none  mascu… Tatooi…
+##  9 Biggs Dark…    183    84 black   light   brown      24   male  mascu… Tatooi…
+## 10 Obi-Wan Ke…    182    77 auburn… fair    blue-g…    57   male  mascu… Stewjon
+## # … with 77 more rows, 4 more variables: species &lt;chr&gt;, films &lt;list&gt;,
+## #   vehicles &lt;list&gt;, starships &lt;list&gt;, and abbreviated variable names
+## #   ¹​`Hair Colour`, ²​`Skin Colour`, ³​`Eye Colour`, ⁴​`Birth Year`, ⁵​homeworld</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="dplyr.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(sw)</span></code></pre></div>
+<pre><code>##  [1] &quot;Name&quot;        &quot;Height&quot;      &quot;Mass&quot;        &quot;Hair Colour&quot; &quot;Skin Colour&quot;
+##  [6] &quot;Eye Colour&quot;  &quot;Birth Year&quot;  &quot;sex&quot;         &quot;gender&quot;      &quot;homeworld&quot;  
+## [11] &quot;species&quot;     &quot;films&quot;       &quot;vehicles&quot;    &quot;starships&quot;</code></pre>
+<div class="try">
+<p>Almost everyone gets confused at some point with <code>rename()</code> and tries to put the original names on the left and the new names on the right. Try it and see what the error message looks like.</p>
+</div>
+</div>
+<div id="distinct" class="section level3 hasAnchor" number="8.4.2">
+<h3><span class="header-section-number">8.4.2</span> distinct()<a href="dplyr.html#distinct" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Get rid of exactly duplicate rows with <code>distinct()</code>. This can be helpful if, for example, you are merging data from multiple computers and some of the data got copied from one computer to another, creating duplicate rows.</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="dplyr.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a data table with duplicated values</span></span>
+<span id="cb78-2"><a href="dplyr.html#cb78-2" aria-hidden="true" tabindex="-1"></a>dupes <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb78-3"><a href="dplyr.html#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="fu">c</span>( <span class="dv">1</span>,   <span class="dv">2</span>,   <span class="dv">1</span>,   <span class="dv">2</span>,   <span class="dv">1</span>,   <span class="dv">2</span>),</span>
+<span id="cb78-4"><a href="dplyr.html#cb78-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">dv =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;D&quot;</span>, <span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>)</span>
+<span id="cb78-5"><a href="dplyr.html#cb78-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb78-6"><a href="dplyr.html#cb78-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-7"><a href="dplyr.html#cb78-7" aria-hidden="true" tabindex="-1"></a>dupes</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 2
+##      id dv   
+##   &lt;dbl&gt; &lt;chr&gt;
+## 1     1 A    
+## 2     2 B    
+## 3     1 C    
+## 4     2 D    
+## 5     1 A    
+## 6     2 B</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="dplyr.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">distinct</span>(dupes)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 2
+##      id dv   
+##   &lt;dbl&gt; &lt;chr&gt;
+## 1     1 A    
+## 2     2 B    
+## 3     1 C    
+## 4     2 D</code></pre>
+</div>
+<div id="count" class="section level3 hasAnchor" number="8.4.3">
+<h3><span class="header-section-number">8.4.3</span> count()<a href="dplyr.html#count" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The function <code>count()</code> is a quick shortcut for the common combination of <code>group_by()</code> and <code>summarise()</code> used to count the number of rows per group.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="dplyr.html#cb82-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb82-2"><a href="dplyr.html#cb82-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(sex) <span class="sc">%&gt;%</span></span>
+<span id="cb82-3"><a href="dplyr.html#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 2
+##   sex                n
+##   &lt;chr&gt;          &lt;int&gt;
+## 1 female            16
+## 2 hermaphroditic     1
+## 3 male              60
+## 4 none               6
+## 5 &lt;NA&gt;               4</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="dplyr.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(starwars, sex)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 2
+##   sex                n
+##   &lt;chr&gt;          &lt;int&gt;
+## 1 female            16
+## 2 hermaphroditic     1
+## 3 male              60
+## 4 none               6
+## 5 &lt;NA&gt;               4</code></pre>
+</div>
+<div id="slice" class="section level3 hasAnchor" number="8.4.4">
+<h3><span class="header-section-number">8.4.4</span> slice()<a href="dplyr.html#slice" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="dplyr.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">slice</span>(starwars, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 14
+##   name         height  mass hair_…¹ skin_…² eye_c…³ birth…⁴ sex   gender homew…⁵
+##   &lt;chr&gt;         &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  
+## 1 Luke Skywal…    172    77 blond   fair    blue         19 male  mascu… Tatooi…
+## 2 C-3PO           167    75 &lt;NA&gt;    gold    yellow      112 none  mascu… Tatooi…
+## 3 R2-D2            96    32 &lt;NA&gt;    white,… red          33 none  mascu… Naboo  
+## 4 Obi-Wan Ken…    182    77 auburn… fair    blue-g…      57 male  mascu… Stewjon
+## # … with 4 more variables: species &lt;chr&gt;, films &lt;list&gt;, vehicles &lt;list&gt;,
+## #   starships &lt;list&gt;, and abbreviated variable names ¹​hair_color, ²​skin_color,
+## #   ³​eye_color, ⁴​birth_year, ⁵​homeworld</code></pre>
+</div>
+<div id="pull" class="section level3 hasAnchor" number="8.4.5">
+<h3><span class="header-section-number">8.4.5</span> pull()<a href="dplyr.html#pull" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="dplyr.html#cb88-1" aria-hidden="true" tabindex="-1"></a>starwars <span class="sc">%&gt;%</span></span>
+<span id="cb88-2"><a href="dplyr.html#cb88-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">&quot;Droid&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb88-3"><a href="dplyr.html#cb88-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(name)</span></code></pre></div>
+<pre><code>## [1] &quot;C-3PO&quot;  &quot;R2-D2&quot;  &quot;R5-D4&quot;  &quot;IG-88&quot;  &quot;R4-P17&quot; &quot;BB8&quot;</code></pre>
+</div>
+</div>
+<div id="window" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Window functions<a href="dplyr.html#window" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Window functions use the order of rows to calculate values. You can use them to do things that require ranking or ordering, like choose the top scores in each class, or accessing the previous and next rows, like calculating cumulative sums or means.</p>
+<p>The <a href="https://dplyr.tidyverse.org/articles/window-functions.html">dplyr window functions vignette</a> has very good detailed explanations of these functions, but we’ve described a few of the most useful ones below.</p>
+<div id="ranking-functions" class="section level3 hasAnchor" number="8.5.1">
+<h3><span class="header-section-number">8.5.1</span> Ranking functions<a href="dplyr.html#ranking-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="dplyr.html#cb90-1" aria-hidden="true" tabindex="-1"></a>grades <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb90-2"><a href="dplyr.html#cb90-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb90-3"><a href="dplyr.html#cb90-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Data Skills&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">16</span>, <span class="dv">17</span>, <span class="dv">17</span>, <span class="dv">19</span>, <span class="dv">20</span>), </span>
+<span id="cb90-4"><a href="dplyr.html#cb90-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Statistics&quot;</span>  <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">18</span>, <span class="dv">19</span>)</span>
+<span id="cb90-5"><a href="dplyr.html#cb90-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb90-6"><a href="dplyr.html#cb90-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(class, grade, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb90-7"><a href="dplyr.html#cb90-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(class) <span class="sc">%&gt;%</span></span>
+<span id="cb90-8"><a href="dplyr.html#cb90-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">row_number =</span> <span class="fu">row_number</span>(),</span>
+<span id="cb90-9"><a href="dplyr.html#cb90-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">rank       =</span> <span class="fu">rank</span>(grade),</span>
+<span id="cb90-10"><a href="dplyr.html#cb90-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">min_rank   =</span> <span class="fu">min_rank</span>(grade),</span>
+<span id="cb90-11"><a href="dplyr.html#cb90-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">dense_rank =</span> <span class="fu">dense_rank</span>(grade),</span>
+<span id="cb90-12"><a href="dplyr.html#cb90-12" aria-hidden="true" tabindex="-1"></a>         <span class="at">quartile   =</span> <span class="fu">ntile</span>(grade, <span class="dv">4</span>),</span>
+<span id="cb90-13"><a href="dplyr.html#cb90-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">percentile =</span> <span class="fu">ntile</span>(grade, <span class="dv">100</span>))</span>
+<span id="cb90-14"><a href="dplyr.html#cb90-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-15"><a href="dplyr.html#cb90-15" aria-hidden="true" tabindex="-1"></a>grades</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 9
+## # Groups:   class [2]
+##       id class       grade row_number  rank min_rank dense_rank quartile perce…¹
+##    &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;      &lt;int&gt; &lt;dbl&gt;    &lt;int&gt;      &lt;int&gt;    &lt;int&gt;   &lt;int&gt;
+##  1     1 Data Skills    16          1   1          1          1        1       1
+##  2     2 Data Skills    17          2   2.5        2          2        1       2
+##  3     3 Data Skills    17          3   2.5        2          2        2       3
+##  4     4 Data Skills    19          4   4          4          3        3       4
+##  5     5 Data Skills    20          5   5          5          4        4       5
+##  6     1 Statistics     14          1   1          1          1        1       1
+##  7     2 Statistics     16          2   2          2          2        1       2
+##  8     3 Statistics     18          3   3.5        3          3        2       3
+##  9     4 Statistics     18          4   3.5        3          3        3       4
+## 10     5 Statistics     19          5   5          5          4        4       5
+## # … with abbreviated variable name ¹​percentile</code></pre>
+<div class="try">
+<ul>
+<li>What are the differences among <code>row_number()</code>, <code>rank()</code>, <code>min_rank()</code>, <code>dense_rank()</code>, and <code>ntile()</code>?</li>
+<li>Why doesn’t <code>row_number()</code> need an argument?</li>
+<li>What would happen if you gave it the argument <code>grade</code> or <code>class</code>?</li>
+<li>What do you think would happen if you removed the <code>group_by(class)</code> line above?</li>
+<li>What if you added <code>id</code> to the grouping?</li>
+<li>What happens if you change the order of the rows?</li>
+<li>What does the second argument in <code>ntile()</code> do?</li>
+</ul>
+</div>
+<p>You can use window functions to group your data into quantiles.</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="dplyr.html#cb92-1" aria-hidden="true" tabindex="-1"></a>sw_mass <span class="ot">&lt;-</span> starwars <span class="sc">%&gt;%</span></span>
+<span id="cb92-2"><a href="dplyr.html#cb92-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="at">tertile =</span> <span class="fu">ntile</span>(mass, <span class="dv">3</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb92-3"><a href="dplyr.html#cb92-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">min =</span> <span class="fu">min</span>(mass),</span>
+<span id="cb92-4"><a href="dplyr.html#cb92-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max =</span> <span class="fu">max</span>(mass),</span>
+<span id="cb92-5"><a href="dplyr.html#cb92-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean =</span> <span class="fu">mean</span>(mass),</span>
+<span id="cb92-6"><a href="dplyr.html#cb92-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span>)</span>
+<span id="cb92-7"><a href="dplyr.html#cb92-7" aria-hidden="true" tabindex="-1"></a>sw_mass</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 4
+##   tertile   min   max  mean
+##     &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1       1    15    68  45.7
+## 2       2    74    82  78.4
+## 3       3    83  1358 172. 
+## 4      NA    NA    NA  NA</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="dplyr.html#cb94-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="cn">NA</span>)</span>
+<span id="cb94-2"><a href="dplyr.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ntile</span>(x, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1]  2  1  2  1  1 NA</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="dplyr.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ntile</span>(x, <span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1]  4  1  3  1  2 NA</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="dplyr.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span>(x,<span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] (3,5]     (0.996,3] (0.996,3] (0.996,3] (0.996,3] &lt;NA&gt;     
+## Levels: (0.996,3] (3,5]</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="dplyr.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span>(x,<span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1] (4,5]     (0.996,2] (2,3]     (0.996,2] (0.996,2] &lt;NA&gt;     
+## Levels: (0.996,2] (2,3] (3,4] (4,5]</code></pre>
+<div class="try">
+<p>Why is there a row of <code>NA</code> values? How would you get rid of them?</p>
+</div>
+</div>
+<div id="offset-functions" class="section level3 hasAnchor" number="8.5.2">
+<h3><span class="header-section-number">8.5.2</span> Offset functions<a href="dplyr.html#offset-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The function <code>lag()</code> gives a previous row’s value. It defaults to 1 row back, but you can change that with the <code>n</code> argument. The function <code>lead()</code> gives values ahead of the current row.</p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="dplyr.html#cb102-1" aria-hidden="true" tabindex="-1"></a>lag_lead <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb102-2"><a href="dplyr.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lag =</span> <span class="fu">lag</span>(x),</span>
+<span id="cb102-3"><a href="dplyr.html#cb102-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">lag2 =</span> <span class="fu">lag</span>(x, <span class="at">n =</span> <span class="dv">2</span>),</span>
+<span id="cb102-4"><a href="dplyr.html#cb102-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">lead =</span> <span class="fu">lead</span>(x, <span class="at">default =</span> <span class="dv">0</span>))</span>
+<span id="cb102-5"><a href="dplyr.html#cb102-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb102-6"><a href="dplyr.html#cb102-6" aria-hidden="true" tabindex="-1"></a>lag_lead</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 4
+##       x   lag  lag2  lead
+##   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+## 1     1    NA    NA     2
+## 2     2     1    NA     3
+## 3     3     2     1     4
+## 4     4     3     2     5
+## 5     5     4     3     6
+## 6     6     5     4     0</code></pre>
+<p>You can use offset functions to calculate change between trials or where a value changes. Use the <code>order_by</code> argument to specify the order of the rows. Alternatively, you can use <code>arrange()</code> before the offset functions.</p>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="dplyr.html#cb104-1" aria-hidden="true" tabindex="-1"></a>trials <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb104-2"><a href="dplyr.html#cb104-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">trial =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">10</span>),</span>
+<span id="cb104-3"><a href="dplyr.html#cb104-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cond =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">&quot;exp&quot;</span>, <span class="st">&quot;ctrl&quot;</span>), <span class="dv">10</span>, T),</span>
+<span id="cb104-4"><a href="dplyr.html#cb104-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">rpois</span>(<span class="dv">10</span>, <span class="dv">4</span>)</span>
+<span id="cb104-5"><a href="dplyr.html#cb104-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb104-6"><a href="dplyr.html#cb104-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb104-7"><a href="dplyr.html#cb104-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">score_change =</span> score <span class="sc">-</span> <span class="fu">lag</span>(score, <span class="at">order_by =</span> trial),</span>
+<span id="cb104-8"><a href="dplyr.html#cb104-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">change_cond =</span> cond <span class="sc">!=</span> <span class="fu">lag</span>(cond, <span class="at">order_by =</span> trial, </span>
+<span id="cb104-9"><a href="dplyr.html#cb104-9" aria-hidden="true" tabindex="-1"></a>                              <span class="at">default =</span> <span class="st">&quot;no condition&quot;</span>)</span>
+<span id="cb104-10"><a href="dplyr.html#cb104-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb104-11"><a href="dplyr.html#cb104-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(trial)</span>
+<span id="cb104-12"><a href="dplyr.html#cb104-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb104-13"><a href="dplyr.html#cb104-13" aria-hidden="true" tabindex="-1"></a>trials</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 5
+##    trial cond  score score_change change_cond
+##    &lt;int&gt; &lt;chr&gt; &lt;int&gt;        &lt;int&gt; &lt;lgl&gt;      
+##  1     1 ctrl      8           NA TRUE       
+##  2     2 ctrl      4           -4 FALSE      
+##  3     3 exp       6            2 TRUE       
+##  4     4 ctrl      2           -4 TRUE       
+##  5     5 ctrl      3            1 FALSE      
+##  6     6 ctrl      6            3 FALSE      
+##  7     7 ctrl      2           -4 FALSE      
+##  8     8 exp       4            2 TRUE       
+##  9     9 ctrl      4            0 TRUE       
+## 10    10 exp       3           -1 TRUE</code></pre>
+<div class="try">
+<p>Look at the help pages for <code>lag()</code> and <code>lead()</code>.</p>
+<ul>
+<li>What happens if you remove the <code>order_by</code> argument or change it to <code>cond</code>?</li>
+<li>What does the <code>default</code> argument do?</li>
+<li>Can you think of circumstances in your own data where you might need to use <code>lag()</code> or <code>lead()</code>?</li>
+</ul>
+</div>
+</div>
+<div id="cumulative-aggregates" class="section level3 hasAnchor" number="8.5.3">
+<h3><span class="header-section-number">8.5.3</span> Cumulative aggregates<a href="dplyr.html#cumulative-aggregates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><code>cumsum()</code>, <code>cummin()</code>, and <code>cummax()</code> are base R functions for calculating cumulative means, minimums, and maximums. The dplyr package introduces <code>cumany()</code> and <code>cumall()</code>, which return <code>TRUE</code> if any or all of the previous values meet their criteria.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="dplyr.html#cb106-1" aria-hidden="true" tabindex="-1"></a>cumulative <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb106-2"><a href="dplyr.html#cb106-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">time =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb106-3"><a href="dplyr.html#cb106-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">obs =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">5</span>)</span>
+<span id="cb106-4"><a href="dplyr.html#cb106-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb106-5"><a href="dplyr.html#cb106-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb106-6"><a href="dplyr.html#cb106-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">cumsum =</span> <span class="fu">cumsum</span>(obs),</span>
+<span id="cb106-7"><a href="dplyr.html#cb106-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">cummin =</span> <span class="fu">cummin</span>(obs),</span>
+<span id="cb106-8"><a href="dplyr.html#cb106-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">cummax =</span> <span class="fu">cummax</span>(obs),</span>
+<span id="cb106-9"><a href="dplyr.html#cb106-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">cumany =</span> <span class="fu">cumany</span>(obs <span class="sc">==</span> <span class="dv">3</span>),</span>
+<span id="cb106-10"><a href="dplyr.html#cb106-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">cumall =</span> <span class="fu">cumall</span>(obs <span class="sc">&lt;</span> <span class="dv">4</span>)</span>
+<span id="cb106-11"><a href="dplyr.html#cb106-11" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb106-12"><a href="dplyr.html#cb106-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb106-13"><a href="dplyr.html#cb106-13" aria-hidden="true" tabindex="-1"></a>cumulative</span></code></pre></div>
+<pre><code>## # A tibble: 10 × 7
+##     time   obs cumsum cummin cummax cumany cumall
+##    &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;lgl&gt;  &lt;lgl&gt; 
+##  1     1     2      2      2      2 FALSE  TRUE  
+##  2     2     2      4      2      2 FALSE  TRUE  
+##  3     3     1      5      1      2 FALSE  TRUE  
+##  4     4     2      7      1      2 FALSE  TRUE  
+##  5     5     4     11      1      4 FALSE  FALSE 
+##  6     6     3     14      1      4 TRUE   FALSE 
+##  7     7     1     15      1      4 TRUE   FALSE 
+##  8     8     0     15      0      4 TRUE   FALSE 
+##  9     9     3     18      0      4 TRUE   FALSE 
+## 10    10     5     23      0      5 TRUE   FALSE</code></pre>
+<div class="try">
+<ul>
+<li>What would happen if you change <code>cumany(obs == 3)</code> to <code>cumany(obs &gt; 2)</code>?</li>
+<li>What would happen if you change <code>cumall(obs &lt; 4)</code> to <code>cumall(obs &lt; 2)</code>?</li>
+<li>Can you think of circumstances in your own data where you might need to use <code>cumany()</code> or <code>cumall()</code>?</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="extra-yo" class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Extra (yo)<a href="dplyr.html#extra-yo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="dplyr.html#cb108-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span></span>
+<span id="cb108-2"><a href="dplyr.html#cb108-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_if</span>(is.numeric, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width
+## 1     5.843333    3.057333        3.758    1.199333</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="dplyr.html#cb110-1" aria-hidden="true" tabindex="-1"></a>by_species <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb110-2"><a href="dplyr.html#cb110-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species)</span>
+<span id="cb110-3"><a href="dplyr.html#cb110-3" aria-hidden="true" tabindex="-1"></a>by_species</span></code></pre></div>
+<pre><code>## # A tibble: 150 × 5
+## # Groups:   Species [3]
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # … with 140 more rows</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="dplyr.html#cb112-1" aria-hidden="true" tabindex="-1"></a>by_species <span class="sc">%&gt;%</span></span>
+<span id="cb112-2"><a href="dplyr.html#cb112-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise_all</span>(<span class="fu">list</span>(min, max))</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 9
+##   Species    Sepal.Len…¹ Sepal…² Petal…³ Petal…⁴ Sepal…⁵ Sepal…⁶ Petal…⁷ Petal…⁸
+##   &lt;fct&gt;            &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 setosa             4.3     2.3     1       0.1     5.8     4.4     1.9     0.6
+## 2 versicolor         4.9     2       3       1       7       3.4     5.1     1.8
+## 3 virginica          4.9     2.2     4.5     1.4     7.9     3.8     6.9     2.5
+## # … with abbreviated variable names ¹​Sepal.Length_fn1, ²​Sepal.Width_fn1,
+## #   ³​Petal.Length_fn1, ⁴​Petal.Width_fn1, ⁵​Sepal.Length_fn2, ⁶​Sepal.Width_fn2,
+## #   ⁷​Petal.Length_fn2, ⁸​Petal.Width_fn2</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="dplyr.html#cb114-1" aria-hidden="true" tabindex="-1"></a>by_species <span class="sc">%&gt;%</span></span>
+<span id="cb114-2"><a href="dplyr.html#cb114-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="fu">list</span>(<span class="at">min =</span> min, <span class="at">max =</span> max)))</span></code></pre></div>
+<pre><code>## # A tibble: 3 × 9
+##   Species    Sepal.Len…¹ Sepal…² Sepal…³ Sepal…⁴ Petal…⁵ Petal…⁶ Petal…⁷ Petal…⁸
+##   &lt;fct&gt;            &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+## 1 setosa             4.3     5.8     2.3     4.4     1       1.9     0.1     0.6
+## 2 versicolor         4.9     7       2       3.4     3       5.1     1       1.8
+## 3 virginica          4.9     7.9     2.2     3.8     4.5     6.9     1.4     2.5
+## # … with abbreviated variable names ¹​Sepal.Length_min, ²​Sepal.Length_max,
+## #   ³​Sepal.Width_min, ⁴​Sepal.Width_max, ⁵​Petal.Length_min, ⁶​Petal.Length_max,
+## #   ⁷​Petal.Width_min, ⁸​Petal.Width_max</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="dplyr.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>(<span class="st">&quot;package:dplyr&quot;</span>)</span></code></pre></div>
+<pre><code>##   [1] &quot;%&gt;%&quot;                   &quot;across&quot;                &quot;add_count&quot;            
+##   [4] &quot;add_count_&quot;            &quot;add_row&quot;               &quot;add_rownames&quot;         
+##   [7] &quot;add_tally&quot;             &quot;add_tally_&quot;            &quot;all_equal&quot;            
+##  [10] &quot;all_of&quot;                &quot;all_vars&quot;              &quot;anti_join&quot;            
+##  [13] &quot;any_of&quot;                &quot;any_vars&quot;              &quot;arrange&quot;              
+##  [16] &quot;arrange_&quot;              &quot;arrange_all&quot;           &quot;arrange_at&quot;           
+##  [19] &quot;arrange_if&quot;            &quot;as.tbl&quot;                &quot;as_data_frame&quot;        
+##  [22] &quot;as_label&quot;              &quot;as_tibble&quot;             &quot;auto_copy&quot;            
+##  [25] &quot;band_instruments&quot;      &quot;band_instruments2&quot;     &quot;band_members&quot;         
+##  [28] &quot;bench_tbls&quot;            &quot;between&quot;               &quot;bind_cols&quot;            
+##  [31] &quot;bind_rows&quot;             &quot;c_across&quot;              &quot;case_when&quot;            
+##  [34] &quot;changes&quot;               &quot;check_dbplyr&quot;          &quot;coalesce&quot;             
+##  [37] &quot;collapse&quot;              &quot;collect&quot;               &quot;combine&quot;              
+##  [40] &quot;common_by&quot;             &quot;compare_tbls&quot;          &quot;compare_tbls2&quot;        
+##  [43] &quot;compute&quot;               &quot;contains&quot;              &quot;copy_to&quot;              
+##  [46] &quot;count&quot;                 &quot;count_&quot;                &quot;cumall&quot;               
+##  [49] &quot;cumany&quot;                &quot;cume_dist&quot;             &quot;cummean&quot;              
+##  [52] &quot;cur_column&quot;            &quot;cur_data&quot;              &quot;cur_data_all&quot;         
+##  [55] &quot;cur_group&quot;             &quot;cur_group_id&quot;          &quot;cur_group_rows&quot;       
+##  [58] &quot;current_vars&quot;          &quot;data_frame&quot;            &quot;data_frame_&quot;          
+##  [61] &quot;db_analyze&quot;            &quot;db_begin&quot;              &quot;db_commit&quot;            
+##  [64] &quot;db_create_index&quot;       &quot;db_create_indexes&quot;     &quot;db_create_table&quot;      
+##  [67] &quot;db_data_type&quot;          &quot;db_desc&quot;               &quot;db_drop_table&quot;        
+##  [70] &quot;db_explain&quot;            &quot;db_has_table&quot;          &quot;db_insert_into&quot;       
+##  [73] &quot;db_list_tables&quot;        &quot;db_query_fields&quot;       &quot;db_query_rows&quot;        
+##  [76] &quot;db_rollback&quot;           &quot;db_save_query&quot;         &quot;db_write_table&quot;       
+##  [79] &quot;dense_rank&quot;            &quot;desc&quot;                  &quot;dim_desc&quot;             
+##  [82] &quot;distinct&quot;              &quot;distinct_&quot;             &quot;distinct_all&quot;         
+##  [85] &quot;distinct_at&quot;           &quot;distinct_if&quot;           &quot;distinct_prepare&quot;     
+##  [88] &quot;do&quot;                    &quot;do_&quot;                   &quot;dplyr_col_modify&quot;     
+##  [91] &quot;dplyr_reconstruct&quot;     &quot;dplyr_row_slice&quot;       &quot;ends_with&quot;            
+##  [94] &quot;enexpr&quot;                &quot;enexprs&quot;               &quot;enquo&quot;                
+##  [97] &quot;enquos&quot;                &quot;ensym&quot;                 &quot;ensyms&quot;               
+## [100] &quot;eval_tbls&quot;             &quot;eval_tbls2&quot;            &quot;everything&quot;           
+## [103] &quot;explain&quot;               &quot;expr&quot;                  &quot;failwith&quot;             
+## [106] &quot;filter&quot;                &quot;filter_&quot;               &quot;filter_all&quot;           
+## [109] &quot;filter_at&quot;             &quot;filter_if&quot;             &quot;first&quot;                
+## [112] &quot;frame_data&quot;            &quot;full_join&quot;             &quot;funs&quot;                 
+## [115] &quot;funs_&quot;                 &quot;glimpse&quot;               &quot;group_by&quot;             
+## [118] &quot;group_by_&quot;             &quot;group_by_all&quot;          &quot;group_by_at&quot;          
+## [121] &quot;group_by_drop_default&quot; &quot;group_by_if&quot;           &quot;group_by_prepare&quot;     
+## [124] &quot;group_cols&quot;            &quot;group_data&quot;            &quot;group_indices&quot;        
+## [127] &quot;group_indices_&quot;        &quot;group_keys&quot;            &quot;group_map&quot;            
+## [130] &quot;group_modify&quot;          &quot;group_nest&quot;            &quot;group_rows&quot;           
+## [133] &quot;group_size&quot;            &quot;group_split&quot;           &quot;group_trim&quot;           
+## [136] &quot;group_vars&quot;            &quot;group_walk&quot;            &quot;grouped_df&quot;           
+## [139] &quot;groups&quot;                &quot;id&quot;                    &quot;ident&quot;                
+## [142] &quot;if_all&quot;                &quot;if_any&quot;                &quot;if_else&quot;              
+## [145] &quot;inner_join&quot;            &quot;intersect&quot;             &quot;is.grouped_df&quot;        
+## [148] &quot;is.src&quot;                &quot;is.tbl&quot;                &quot;is_grouped_df&quot;        
+## [151] &quot;lag&quot;                   &quot;last&quot;                  &quot;last_col&quot;             
+## [154] &quot;lead&quot;                  &quot;left_join&quot;             &quot;location&quot;             
+## [157] &quot;lst&quot;                   &quot;lst_&quot;                  &quot;make_tbl&quot;             
+## [160] &quot;matches&quot;               &quot;min_rank&quot;              &quot;mutate&quot;               
+## [163] &quot;mutate_&quot;               &quot;mutate_all&quot;            &quot;mutate_at&quot;            
+## [166] &quot;mutate_each&quot;           &quot;mutate_each_&quot;          &quot;mutate_if&quot;            
+## [169] &quot;n&quot;                     &quot;n_distinct&quot;            &quot;n_groups&quot;             
+## [172] &quot;na_if&quot;                 &quot;near&quot;                  &quot;nest_by&quot;              
+## [175] &quot;nest_join&quot;             &quot;new_grouped_df&quot;        &quot;new_rowwise_df&quot;       
+## [178] &quot;nth&quot;                   &quot;ntile&quot;                 &quot;num_range&quot;            
+## [181] &quot;one_of&quot;                &quot;order_by&quot;              &quot;percent_rank&quot;         
+## [184] &quot;progress_estimated&quot;    &quot;pull&quot;                  &quot;quo&quot;                  
+## [187] &quot;quo_name&quot;              &quot;quos&quot;                  &quot;recode&quot;               
+## [190] &quot;recode_factor&quot;         &quot;relocate&quot;              &quot;rename&quot;               
+## [193] &quot;rename_&quot;               &quot;rename_all&quot;            &quot;rename_at&quot;            
+## [196] &quot;rename_if&quot;             &quot;rename_vars&quot;           &quot;rename_vars_&quot;         
+## [199] &quot;rename_with&quot;           &quot;right_join&quot;            &quot;row_number&quot;           
+## [202] &quot;rows_append&quot;           &quot;rows_delete&quot;           &quot;rows_insert&quot;          
+## [205] &quot;rows_patch&quot;            &quot;rows_update&quot;           &quot;rows_upsert&quot;          
+## [208] &quot;rowwise&quot;               &quot;same_src&quot;              &quot;sample_frac&quot;          
+## [211] &quot;sample_n&quot;              &quot;select&quot;                &quot;select_&quot;              
+## [214] &quot;select_all&quot;            &quot;select_at&quot;             &quot;select_if&quot;            
+## [217] &quot;select_var&quot;            &quot;select_vars&quot;           &quot;select_vars_&quot;         
+## [220] &quot;semi_join&quot;             &quot;setdiff&quot;               &quot;setequal&quot;             
+## [223] &quot;show_query&quot;            &quot;slice&quot;                 &quot;slice_&quot;               
+## [226] &quot;slice_head&quot;            &quot;slice_max&quot;             &quot;slice_min&quot;            
+## [229] &quot;slice_sample&quot;          &quot;slice_tail&quot;            &quot;sql&quot;                  
+## [232] &quot;sql_escape_ident&quot;      &quot;sql_escape_string&quot;     &quot;sql_join&quot;             
+## [235] &quot;sql_select&quot;            &quot;sql_semi_join&quot;         &quot;sql_set_op&quot;           
+## [238] &quot;sql_subquery&quot;          &quot;sql_translate_env&quot;     &quot;src&quot;                  
+## [241] &quot;src_df&quot;                &quot;src_local&quot;             &quot;src_mysql&quot;            
+## [244] &quot;src_postgres&quot;          &quot;src_sqlite&quot;            &quot;src_tbls&quot;             
+## [247] &quot;starts_with&quot;           &quot;starwars&quot;              &quot;storms&quot;               
+## [250] &quot;summarise&quot;             &quot;summarise_&quot;            &quot;summarise_all&quot;        
+## [253] &quot;summarise_at&quot;          &quot;summarise_each&quot;        &quot;summarise_each_&quot;      
+## [256] &quot;summarise_if&quot;          &quot;summarize&quot;             &quot;summarize_&quot;           
+## [259] &quot;summarize_all&quot;         &quot;summarize_at&quot;          &quot;summarize_each&quot;       
+## [262] &quot;summarize_each_&quot;       &quot;summarize_if&quot;          &quot;sym&quot;                  
+## [265] &quot;syms&quot;                  &quot;tally&quot;                 &quot;tally_&quot;               
+## [268] &quot;tbl&quot;                   &quot;tbl_df&quot;                &quot;tbl_nongroup_vars&quot;    
+## [271] &quot;tbl_ptype&quot;             &quot;tbl_sum&quot;               &quot;tbl_vars&quot;             
+## [274] &quot;tibble&quot;                &quot;top_frac&quot;              &quot;top_n&quot;                
+## [277] &quot;transmute&quot;             &quot;transmute_&quot;            &quot;transmute_all&quot;        
+## [280] &quot;transmute_at&quot;          &quot;transmute_if&quot;          &quot;tribble&quot;              
+## [283] &quot;type_sum&quot;              &quot;ungroup&quot;               &quot;union&quot;                
+## [286] &quot;union_all&quot;             &quot;validate_grouped_df&quot;   &quot;validate_rowwise_df&quot;  
+## [289] &quot;vars&quot;                  &quot;with_groups&quot;           &quot;with_order&quot;           
+## [292] &quot;wrap_dbplyr_obj&quot;</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="dplyr.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">citation</span>(<span class="at">package=</span><span class="st">&quot;dplyr&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## To cite package &#39;dplyr&#39; in publications use:
+## 
+##   Wickham H, François R, Henry L, Müller K (2022). _dplyr: A Grammar of
+##   Data Manipulation_. R package version 1.0.10,
+##   &lt;https://CRAN.R-project.org/package=dplyr&gt;.
+## 
+## A BibTeX entry for LaTeX users is
+## 
+##   @Manual{,
+##     title = {dplyr: A Grammar of Data Manipulation},
+##     author = {Hadley Wickham and Romain François and Lionel Henry and Kirill Müller},
+##     year = {2022},
+##     note = {R package version 1.0.10},
+##     url = {https://CRAN.R-project.org/package=dplyr},
+##   }</code></pre>
+</div>
+<div id="resources-dplyr" class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> Further Resources<a href="dplyr.html#resources-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><a href="http://r4ds.had.co.nz/transform.html">Chapter 5: Data Transformation</a> in <em>R for Data Science</em></li>
+<li><a href="https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf">Data transformation cheat sheet</a></li>
+<li><a href="http://r4ds.had.co.nz/dates-and-times.html">Chapter 16: Date and times</a> in <em>R for Data Science</em></li>
+</ul>
+
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div class="csl-entry">
+Xie, Yihui. 2015. <em>Dynamic Documents with <span>R</span> and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.
+</div>
+<div class="csl-entry">
+———. 2022. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-treinando_dplyr.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
