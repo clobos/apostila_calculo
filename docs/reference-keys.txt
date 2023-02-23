@@ -1,10 +1,8 @@
 introdução-ao-dplyr-e-ggplot2
 tidyverse-essentials-dplyr-tidyr
 inspect-data
-manipulate-variables-columns---select-rename
 select---columns-selection
 rename-columns-manufacturer-and-model
 yo-hice-todo-lo-que-está-abajo
-mutate-transmute
 mutate
 transmute

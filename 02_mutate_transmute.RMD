@@ -63,7 +63,6 @@ select(df,
        everything()) # selects all other columns
 ``` 
 
-# mutate(), transmute()
 
 ## mutate()
 

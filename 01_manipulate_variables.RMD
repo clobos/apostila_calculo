@@ -37,9 +37,8 @@ glimpse(df)#YO
 names(df)#YO
 ```
 
-# Manipulate variables (columns) - select(), rename()
-
 ## select() - Columns selection
+
 ```{r}
 #   Extract columns car: manufacturer, model, year
 select(df, manufacturer, model, year) # just extract columns
@@ -82,7 +81,7 @@ select(df,
        everything()) # selects all other columns
 ```
 
-# YO hice todo lo que está abajo!
+## YO hice todo lo que está abajo!
 
 ```{r}
   df %>% 
