@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capítulo 2 tidyverse essentials (dplyr &amp; tidyr) | dplyr e ggplot2</title>
   <meta name="description" content="Dizer alguma coisa" />
-  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capítulo 2 tidyverse essentials (dplyr &amp; tidyr) | dplyr e ggplot2" />
   <meta property="og:type" content="book" />
@@ -136,15 +136,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">dplyr e ggplot2</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução ao dplyr e ggplot2</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Alguns atalhos no Rstudio</a></li>
 <li class="chapter" data-level="2" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html"><i class="fa fa-check"></i><b>2</b> tidyverse essentials (dplyr &amp; tidyr)</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html#inspect-data"><i class="fa fa-check"></i><b>2.1</b> Inspect data</a></li>
-<li class="chapter" data-level="2.2" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html#select---columns-selection"><i class="fa fa-check"></i><b>2.2</b> select() - Columns selection</a></li>
-<li class="chapter" data-level="2.3" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html#rename-columns-manufacturer-and-model"><i class="fa fa-check"></i><b>2.3</b> Rename columns “manufacturer” and “model”</a></li>
-<li class="chapter" data-level="2.4" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html#yo-hice-todo-lo-que-está-abajo"><i class="fa fa-check"></i><b>2.4</b> YO hice todo lo que está abajo!</a></li>
-<li class="chapter" data-level="2.5" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html#mutate"><i class="fa fa-check"></i><b>2.5</b> mutate()</a></li>
-<li class="chapter" data-level="2.6" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html#transmute"><i class="fa fa-check"></i><b>2.6</b> transmute()</a></li>
+<li class="chapter" data-level="2.1" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html#carrega-alguns-pacotes-a-serem-usados"><i class="fa fa-check"></i><b>2.1</b> Carrega alguns pacotes a serem usados</a></li>
+<li class="chapter" data-level="2.2" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html#descrição-dos-dados-mpg"><i class="fa fa-check"></i><b>2.2</b> Descrição dos dados <code>mpg</code></a></li>
+<li class="chapter" data-level="2.3" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html#select"><i class="fa fa-check"></i><b>2.3</b> select()</a></li>
+<li class="chapter" data-level="2.4" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html#rename"><i class="fa fa-check"></i><b>2.4</b> rename()</a></li>
+<li class="chapter" data-level="2.5" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html#yo-hice-todo-lo-que-está-abajo"><i class="fa fa-check"></i><b>2.5</b> YO hice todo lo que está abajo!</a></li>
+<li class="chapter" data-level="2.6" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html#mutate"><i class="fa fa-check"></i><b>2.6</b> mutate()</a></li>
+<li class="chapter" data-level="2.7" data-path="tidyverse-essentials-dplyr-tidyr.html"><a href="tidyverse-essentials-dplyr-tidyr.html#transmute"><i class="fa fa-check"></i><b>2.7</b> transmute()</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -168,66 +169,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="tidyverse-essentials-dplyr-tidyr" class="section level1 hasAnchor" number="2">
 <h1><span class="header-section-number">Capítulo 2</span> tidyverse essentials (dplyr &amp; tidyr)<a href="tidyverse-essentials-dplyr-tidyr.html#tidyverse-essentials-dplyr-tidyr" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Para considerar</p>
-<blockquote>
-<p>Preview HTML Ctrl+Shift+K Command+Shift+K (R Markdown)</p>
-</blockquote>
-<blockquote>
-<p>%&gt;% is Ctrl + Shift + M (Windows) or Cmd + Shift + M (Mac).</p>
-</blockquote>
-<blockquote>
-<p>You can quickly insert chunks into your R Markdown file with the keyboard shortcut Cmd + Option + I (Windows Ctrl + Alt + I).</p>
-</blockquote>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb1-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">graphics.off</span>()</span>
-<span id="cb1-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install packages and load package</span></span>
-<span id="cb1-5"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;tidyverse&quot;) # tidyverse packages</span></span>
-<span id="cb1-6"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;dplyr&quot;)     # individual package installation</span></span>
-<span id="cb1-7"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;tidyr&quot;)     # individual package installation</span></span>
-<span id="cb1-8"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;ggplot2&quot;)   # we need it for the data set</span></span>
-<span id="cb1-9"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-11"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb1-12"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
-<div id="inspect-data" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Inspect data<a href="tidyverse-essentials-dplyr-tidyr.html#inspect-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="carrega-alguns-pacotes-a-serem-usados" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Carrega alguns pacotes a serem usados<a href="tidyverse-essentials-dplyr-tidyr.html#carrega-alguns-pacotes-a-serem-usados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install packages and load package</span></span>
+<span id="cb1-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;tidyverse&quot;) # tidyverse packages</span></span>
+<span id="cb1-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;dplyr&quot;)     # individual package installation</span></span>
+<span id="cb1-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;tidyr&quot;)     # individual package installation</span></span>
+<span id="cb1-5"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;ggplot2&quot;)   # we need it for the data set</span></span>
+<span id="cb1-6"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-7"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-8"><a href="tidyverse-essentials-dplyr-tidyr.html#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+</div>
+<div id="descrição-dos-dados-mpg" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Descrição dos dados <code>mpg</code><a href="tidyverse-essentials-dplyr-tidyr.html#descrição-dos-dados-mpg" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Fuel economy data from 1999 to 2008 for 38 popular models of cars
+Description This dataset contains a subset of the fuel economy data that the EPA makes available on <a href="https://fueleconomy.gov/" class="uri">https://fueleconomy.gov/</a>. It contains only models which had a new release every year between 1999 and 2008 - this was used as a proxy for the popularity of the car. A data frame with 234 rows and 11 variables:</p>
+<ul>
+<li><p>manufacturer manufacturer name</p></li>
+<li><p>model model name</p></li>
+<li><p>displ engine displacement, in litres</p></li>
+<li><p>year year of manufacture</p></li>
+<li><p>cyl number of cylinders</p></li>
+<li><p>trans type of transmission</p></li>
+<li><p>drv the type of drive train, where f = front-wheel drive, r = rear wheel drive, 4 = 4wd</p></li>
+<li><p>cty city miles per gallon</p></li>
+<li><p>hwy highway miles per gallon</p></li>
+<li><p>fl fuel type</p></li>
+<li><p>class “type” of car</p></li>
+</ul>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#help(&quot;mpg&quot;)</span></span>
-<span id="cb2-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> mpg</span>
-<span id="cb2-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#View(df) # check table</span></span>
-<span id="cb2-5"><a href="tidyverse-essentials-dplyr-tidyr.html#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df) <span class="co"># print to console</span></span></code></pre></div>
-<pre><code>## # A tibble: 234 × 11
-##    manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class
-##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
-##  1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…
-##  2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…
-##  3 audi         a4           2    2008     4 manu… f        20    31 p     comp…
-##  4 audi         a4           2    2008     4 auto… f        21    30 p     comp…
-##  5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…
-##  6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…
-##  7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…
-##  8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…
-##  9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…
-## 10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…
-## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df) <span class="co"># table structure</span></span></code></pre></div>
-<pre><code>## tibble [234 × 11] (S3: tbl_df/tbl/data.frame)
-##  $ manufacturer: chr [1:234] &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...
-##  $ model       : chr [1:234] &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; ...
-##  $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
-##  $ year        : int [1:234] 1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...
-##  $ cyl         : int [1:234] 4 4 4 4 6 6 6 4 4 4 ...
-##  $ trans       : chr [1:234] &quot;auto(l5)&quot; &quot;manual(m5)&quot; &quot;manual(m6)&quot; &quot;auto(av)&quot; ...
-##  $ drv         : chr [1:234] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...
-##  $ cty         : int [1:234] 18 21 20 21 16 18 18 18 16 20 ...
-##  $ hwy         : int [1:234] 29 29 31 30 26 26 27 26 25 28 ...
-##  $ fl          : chr [1:234] &quot;p&quot; &quot;p&quot; &quot;p&quot; &quot;p&quot; ...
-##  $ class       : chr [1:234] &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; ...</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df); <span class="fu">ncol</span>(df) <span class="co"># rows ~ cols</span></span></code></pre></div>
-<pre><code>## [1] 234</code></pre>
-<pre><code>## [1] 11</code></pre>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)<span class="co">#YO</span></span></code></pre></div>
+<span id="cb2-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> mpg</span>
+<span id="cb2-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#View(df) # check table</span></span>
+<span id="cb2-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(df)<span class="co">#YO</span></span></code></pre></div>
 <pre><code>## Rows: 234
 ## Columns: 11
 ## $ manufacturer &lt;chr&gt; &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;audi&quot;, &quot;…
@@ -241,15 +214,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ hwy          &lt;int&gt; 29, 29, 31, 30, 26, 26, 27, 26, 25, 28, 27, 25, 25, 25, 2…
 ## $ fl           &lt;chr&gt; &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p&quot;, &quot;p…
 ## $ class        &lt;chr&gt; &quot;compact&quot;, &quot;compact&quot;, &quot;compact&quot;, &quot;compact&quot;, &quot;compact&quot;, &quot;c…</code></pre>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(df)<span class="co">#YO</span></span></code></pre></div>
-<pre><code>##  [1] &quot;manufacturer&quot; &quot;model&quot;        &quot;displ&quot;        &quot;year&quot;         &quot;cyl&quot;         
-##  [6] &quot;trans&quot;        &quot;drv&quot;          &quot;cty&quot;          &quot;hwy&quot;          &quot;fl&quot;          
-## [11] &quot;class&quot;</code></pre>
 </div>
-<div id="select---columns-selection" class="section level2 hasAnchor" number="2.2">
-<h2><span class="header-section-number">2.2</span> select() - Columns selection<a href="tidyverse-essentials-dplyr-tidyr.html#select---columns-selection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Extract columns car: manufacturer, model, year</span></span>
-<span id="cb13-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, manufacturer, model, year) <span class="co"># just extract columns</span></span></code></pre></div>
+<div id="select" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> select()<a href="tidyverse-essentials-dplyr-tidyr.html#select" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Extract columns car: manufacturer, model, year</span></span>
+<span id="cb4-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, manufacturer, model, year) <span class="co"># just extract columns</span></span></code></pre></div>
 <pre><code>## # A tibble: 234 × 3
 ##    manufacturer model       year
 ##    &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;
@@ -264,11 +233,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 audi         a4 quattro  1999
 ## 10 audi         a4 quattro  2008
 ## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb15-1" aria-hidden="true" tabindex="-1"></a>df.car.info <span class="ot">&lt;-</span> <span class="fu">select</span>(df, manufacturer, model, year)</span>
-<span id="cb15-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(df.car.info)</span>
-<span id="cb15-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   Extract columns that begin with letter &quot;m&quot;</span></span>
-<span id="cb15-5"><a href="tidyverse-essentials-dplyr-tidyr.html#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">starts_with</span>(<span class="st">&quot;m&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb6-1" aria-hidden="true" tabindex="-1"></a>df.car.info <span class="ot">&lt;-</span> <span class="fu">select</span>(df, manufacturer, model, year)</span>
+<span id="cb6-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb6-2" aria-hidden="true" tabindex="-1"></a>df.car.info</span></code></pre></div>
+<pre><code>## # A tibble: 234 × 3
+##    manufacturer model       year
+##    &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;
+##  1 audi         a4          1999
+##  2 audi         a4          1999
+##  3 audi         a4          2008
+##  4 audi         a4          2008
+##  5 audi         a4          1999
+##  6 audi         a4          1999
+##  7 audi         a4          2008
+##  8 audi         a4 quattro  1999
+##  9 audi         a4 quattro  1999
+## 10 audi         a4 quattro  2008
+## # … with 224 more rows</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(df.car.info)</span>
+<span id="cb8-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   Extract columns that begin with letter &quot;m&quot;</span></span>
+<span id="cb8-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">starts_with</span>(<span class="st">&quot;m&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 234 × 2
 ##    manufacturer model     
 ##    &lt;chr&gt;        &lt;chr&gt;     
@@ -283,8 +267,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 audi         a4 quattro
 ## 10 audi         a4 quattro
 ## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Extract columns that contain letter &quot;r&quot;</span></span>
-<span id="cb17-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">contains</span>(<span class="st">&quot;r&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Extract columns that contain letter &quot;r&quot;</span></span>
+<span id="cb10-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">contains</span>(<span class="st">&quot;r&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 234 × 4
 ##    manufacturer  year trans      drv  
 ##    &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;
@@ -299,8 +283,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 audi          1999 auto(l5)   4    
 ## 10 audi          2008 manual(m6) 4    
 ## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Extract columns that end with letter &quot;y&quot;</span></span>
-<span id="cb19-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">ends_with</span>(<span class="st">&quot;y&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Extract columns that end with letter &quot;y&quot;</span></span>
+<span id="cb12-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">ends_with</span>(<span class="st">&quot;y&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 234 × 2
 ##      cty   hwy
 ##    &lt;int&gt; &lt;int&gt;
@@ -315,8 +299,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9    16    25
 ## 10    20    28
 ## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Select column by columns index</span></span>
-<span id="cb21-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)      <span class="co"># first three columns</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Select column by columns index</span></span>
+<span id="cb14-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)      <span class="co"># first three columns</span></span></code></pre></div>
 <pre><code>## # A tibble: 234 × 3
 ##    manufacturer model      displ
 ##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt;
@@ -331,7 +315,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 audi         a4 quattro   1.8
 ## 10 audi         a4 quattro   2  
 ## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>)) <span class="co"># second, fifth and seventh column</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>)) <span class="co"># second, fifth and seventh column</span></span></code></pre></div>
 <pre><code>## # A tibble: 234 × 3
 ##    model        cyl drv  
 ##    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;
@@ -346,7 +330,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 a4 quattro     4 4    
 ## 10 a4 quattro     4 4    
 ## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, (<span class="fu">ncol</span>(df)<span class="sc">-</span><span class="dv">2</span>)<span class="sc">:</span><span class="fu">ncol</span>(df)) <span class="co"># last three columns</span></span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, (<span class="fu">ncol</span>(df)<span class="sc">-</span><span class="dv">2</span>)<span class="sc">:</span><span class="fu">ncol</span>(df)) <span class="co"># last three columns</span></span></code></pre></div>
 <pre><code>## # A tibble: 234 × 3
 ##      hwy fl    class  
 ##    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
@@ -361,7 +345,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9    25 p     compact
 ## 10    28 p     compact
 ## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df,manufacturer<span class="sc">:</span>cyl) <span class="co">#YO</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df,manufacturer<span class="sc">:</span>cyl) <span class="co">#YO</span></span></code></pre></div>
 <pre><code>## # A tibble: 234 × 5
 ##    manufacturer model      displ  year   cyl
 ##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt;
@@ -376,7 +360,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 audi         a4 quattro   1.8  1999     4
 ## 10 audi         a4 quattro   2    2008     4
 ## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df,<span class="sc">-</span>(manufacturer<span class="sc">:</span>cyl)) <span class="co">#YO</span></span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df,<span class="sc">-</span>(manufacturer<span class="sc">:</span>cyl)) <span class="co">#YO</span></span></code></pre></div>
 <pre><code>## # A tibble: 234 × 6
 ##    trans      drv     cty   hwy fl    class  
 ##    &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
@@ -391,20 +375,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 auto(l5)   4        16    25 p     compact
 ## 10 manual(m6) 4        20    28 p     compact
 ## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename() - Rename columns</span></span></code></pre></div>
 </div>
-<div id="rename-columns-manufacturer-and-model" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Rename columns “manufacturer” and “model”<a href="tidyverse-essentials-dplyr-tidyr.html#rename-columns-manufacturer-and-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb32-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">rename</span>(df, </span>
-<span id="cb32-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb32-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">mnfc =</span> manufacturer,</span>
-<span id="cb32-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb32-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">mod =</span> model)</span>
-<span id="cb32-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-5"><a href="tidyverse-essentials-dplyr-tidyr.html#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="tidyverse-essentials-dplyr-tidyr.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># select columns and rename in one take</span></span>
-<span id="cb32-7"><a href="tidyverse-essentials-dplyr-tidyr.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df,</span>
-<span id="cb32-8"><a href="tidyverse-essentials-dplyr-tidyr.html#cb32-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">mnfc =</span> manufacturer,</span>
-<span id="cb32-9"><a href="tidyverse-essentials-dplyr-tidyr.html#cb32-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">mod =</span> model,</span>
-<span id="cb32-10"><a href="tidyverse-essentials-dplyr-tidyr.html#cb32-10" aria-hidden="true" tabindex="-1"></a>       <span class="fu">everything</span>()) <span class="co"># selects all other columns</span></span></code></pre></div>
+<div id="rename" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> rename()<a href="tidyverse-essentials-dplyr-tidyr.html#rename" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb24-1" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">rename</span>(df, </span>
+<span id="cb24-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb24-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">mnfc =</span> manufacturer,</span>
+<span id="cb24-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb24-3" aria-hidden="true" tabindex="-1"></a>              <span class="at">mod =</span> model)</span>
+<span id="cb24-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="tidyverse-essentials-dplyr-tidyr.html#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="tidyverse-essentials-dplyr-tidyr.html#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># select columns and rename in one take</span></span>
+<span id="cb24-7"><a href="tidyverse-essentials-dplyr-tidyr.html#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df,</span>
+<span id="cb24-8"><a href="tidyverse-essentials-dplyr-tidyr.html#cb24-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">mnfc =</span> manufacturer,</span>
+<span id="cb24-9"><a href="tidyverse-essentials-dplyr-tidyr.html#cb24-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">mod =</span> model,</span>
+<span id="cb24-10"><a href="tidyverse-essentials-dplyr-tidyr.html#cb24-10" aria-hidden="true" tabindex="-1"></a>       <span class="fu">everything</span>()) <span class="co"># selects all other columns</span></span></code></pre></div>
 <pre><code>## # A tibble: 234 × 11
 ##    mnfc  mod        displ  year   cyl trans      drv     cty   hwy fl    class  
 ##    &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
@@ -420,11 +403,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 audi  a4 quattro   2    2008     4 manual(m6) 4        20    28 p     compact
 ## # … with 224 more rows</code></pre>
 </div>
-<div id="yo-hice-todo-lo-que-está-abajo" class="section level2 hasAnchor" number="2.4">
-<h2><span class="header-section-number">2.4</span> YO hice todo lo que está abajo!<a href="tidyverse-essentials-dplyr-tidyr.html#yo-hice-todo-lo-que-está-abajo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb34-1" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
-<span id="cb34-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb34-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">between</span>(cty,<span class="dv">15</span>, <span class="dv">22</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb34-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(cty) <span class="co">#YO</span></span></code></pre></div>
+<div id="yo-hice-todo-lo-que-está-abajo" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> YO hice todo lo que está abajo!<a href="tidyverse-essentials-dplyr-tidyr.html#yo-hice-todo-lo-que-está-abajo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb26-1" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="fu">between</span>(cty,<span class="dv">15</span>, <span class="dv">22</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb26-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb26-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(cty) <span class="co">#YO</span></span></code></pre></div>
 <pre><code>## # A tibble: 143 × 1
 ##      cty
 ##    &lt;int&gt;
@@ -439,7 +422,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9    16
 ## 10    20
 ## # … with 133 more rows</code></pre>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">matches</span>(<span class="st">&quot;[abc]&quot;</span>)) <span class="co">#YO</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">matches</span>(<span class="st">&quot;[abc]&quot;</span>)) <span class="co">#YO</span></span></code></pre></div>
 <pre><code>## # A tibble: 234 × 6
 ##    manufacturer  year   cyl trans        cty class  
 ##    &lt;chr&gt;        &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;  
@@ -454,7 +437,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 audi          1999     4 auto(l5)      16 compact
 ## 10 audi          2008     4 manual(m6)    20 compact
 ## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">starts_with</span>(<span class="st">&quot;m&quot;</span>), <span class="fu">starts_with</span>(<span class="st">&quot;c&quot;</span>)) <span class="co">#YO</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">starts_with</span>(<span class="st">&quot;m&quot;</span>), <span class="fu">starts_with</span>(<span class="st">&quot;c&quot;</span>)) <span class="co">#YO</span></span></code></pre></div>
 <pre><code>## # A tibble: 234 × 5
 ##    manufacturer model        cyl   cty class  
 ##    &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt; &lt;int&gt; &lt;chr&gt;  
@@ -469,7 +452,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9 audi         a4 quattro     4    16 compact
 ## 10 audi         a4 quattro     4    20 compact
 ## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">ends_with</span>(<span class="st">&quot;l&quot;</span>), <span class="fu">ends_with</span>(<span class="st">&quot;s&quot;</span>)) <span class="co">#YO</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">ends_with</span>(<span class="st">&quot;l&quot;</span>), <span class="fu">ends_with</span>(<span class="st">&quot;s&quot;</span>)) <span class="co">#YO</span></span></code></pre></div>
 <pre><code>## # A tibble: 234 × 6
 ##    model      displ   cyl fl    trans      class  
 ##    &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;  
@@ -485,209 +468,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 a4 quattro   2       4 p     manual(m6) compact
 ## # … with 224 more rows</code></pre>
 
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 tidyverse essentials (dplyr &amp; tidyr)</span></span>
-<span id="cb42-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
-<span id="cb42-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">graphics.off</span>()</span>
-<span id="cb42-5"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-6"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Install packages and load package</span></span>
-<span id="cb42-7"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;tidyverse&quot;) # tidyverse packages</span></span>
-<span id="cb42-8"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;dplyr&quot;)     # individual package installation</span></span>
-<span id="cb42-9"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;tidyr&quot;)     # individual package installation</span></span>
-<span id="cb42-10"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(&quot;ggplot2&quot;)   # we need it for the data set</span></span>
-<span id="cb42-11"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-12"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb42-13"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb42-14"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb42-15"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-16"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect data</span></span>
-<span id="cb42-17"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="co">#help(&quot;mpg&quot;)</span></span>
-<span id="cb42-18"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-19"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-19" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> mpg</span>
-<span id="cb42-20"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-20" aria-hidden="true" tabindex="-1"></a><span class="co">#View(df) # check table</span></span>
-<span id="cb42-21"><a href="tidyverse-essentials-dplyr-tidyr.html#cb42-21" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(df) <span class="co"># print to console</span></span></code></pre></div>
-<pre><code>## # A tibble: 234 × 11
-##    manufacturer model      displ  year   cyl trans drv     cty   hwy fl    class
-##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;
-##  1 audi         a4           1.8  1999     4 auto… f        18    29 p     comp…
-##  2 audi         a4           1.8  1999     4 manu… f        21    29 p     comp…
-##  3 audi         a4           2    2008     4 manu… f        20    31 p     comp…
-##  4 audi         a4           2    2008     4 auto… f        21    30 p     comp…
-##  5 audi         a4           2.8  1999     6 auto… f        16    26 p     comp…
-##  6 audi         a4           2.8  1999     6 manu… f        18    26 p     comp…
-##  7 audi         a4           3.1  2008     6 auto… f        18    27 p     comp…
-##  8 audi         a4 quattro   1.8  1999     4 manu… 4        18    26 p     comp…
-##  9 audi         a4 quattro   1.8  1999     4 auto… 4        16    25 p     comp…
-## 10 audi         a4 quattro   2    2008     4 manu… 4        20    28 p     comp…
-## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(df) <span class="co"># table structure</span></span></code></pre></div>
-<pre><code>## tibble [234 × 11] (S3: tbl_df/tbl/data.frame)
-##  $ manufacturer: chr [1:234] &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; &quot;audi&quot; ...
-##  $ model       : chr [1:234] &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; &quot;a4&quot; ...
-##  $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...
-##  $ year        : int [1:234] 1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...
-##  $ cyl         : int [1:234] 4 4 4 4 6 6 6 4 4 4 ...
-##  $ trans       : chr [1:234] &quot;auto(l5)&quot; &quot;manual(m5)&quot; &quot;manual(m6)&quot; &quot;auto(av)&quot; ...
-##  $ drv         : chr [1:234] &quot;f&quot; &quot;f&quot; &quot;f&quot; &quot;f&quot; ...
-##  $ cty         : int [1:234] 18 21 20 21 16 18 18 18 16 20 ...
-##  $ hwy         : int [1:234] 29 29 31 30 26 26 27 26 25 28 ...
-##  $ fl          : chr [1:234] &quot;p&quot; &quot;p&quot; &quot;p&quot; &quot;p&quot; ...
-##  $ class       : chr [1:234] &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; &quot;compact&quot; ...</code></pre>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(df); <span class="fu">ncol</span>(df) <span class="co"># rows ~ cols</span></span></code></pre></div>
-<pre><code>## [1] 234</code></pre>
-<pre><code>## [1] 11</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1.3 Manipulate variables (columns) - select(), rename()</span></span>
-<span id="cb49-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># select() - Columns selection</span></span>
-<span id="cb49-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-5"><a href="tidyverse-essentials-dplyr-tidyr.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="co">#   Extract columns car: manufacturer, model, year</span></span>
-<span id="cb49-6"><a href="tidyverse-essentials-dplyr-tidyr.html#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, manufacturer, model, year) <span class="co"># just extract columns</span></span></code></pre></div>
-<pre><code>## # A tibble: 234 × 3
-##    manufacturer model       year
-##    &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;
-##  1 audi         a4          1999
-##  2 audi         a4          1999
-##  3 audi         a4          2008
-##  4 audi         a4          2008
-##  5 audi         a4          1999
-##  6 audi         a4          1999
-##  7 audi         a4          2008
-##  8 audi         a4 quattro  1999
-##  9 audi         a4 quattro  1999
-## 10 audi         a4 quattro  2008
-## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb51-1" aria-hidden="true" tabindex="-1"></a>df.car.info <span class="ot">&lt;-</span> <span class="fu">select</span>(df, manufacturer, model, year)</span>
-<span id="cb51-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(df.car.info)</span>
-<span id="cb51-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb51-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   Extract columns that begin with letter &quot;m&quot;</span></span>
-<span id="cb51-5"><a href="tidyverse-essentials-dplyr-tidyr.html#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">starts_with</span>(<span class="st">&quot;m&quot;</span>))</span></code></pre></div>
-<pre><code>## # A tibble: 234 × 2
-##    manufacturer model     
-##    &lt;chr&gt;        &lt;chr&gt;     
-##  1 audi         a4        
-##  2 audi         a4        
-##  3 audi         a4        
-##  4 audi         a4        
-##  5 audi         a4        
-##  6 audi         a4        
-##  7 audi         a4        
-##  8 audi         a4 quattro
-##  9 audi         a4 quattro
-## 10 audi         a4 quattro
-## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Extract columns that contain letter &quot;r&quot;</span></span>
-<span id="cb53-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">contains</span>(<span class="st">&quot;r&quot;</span>))</span></code></pre></div>
-<pre><code>## # A tibble: 234 × 4
-##    manufacturer  year trans      drv  
-##    &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;
-##  1 audi          1999 auto(l5)   f    
-##  2 audi          1999 manual(m5) f    
-##  3 audi          2008 manual(m6) f    
-##  4 audi          2008 auto(av)   f    
-##  5 audi          1999 auto(l5)   f    
-##  6 audi          1999 manual(m5) f    
-##  7 audi          2008 auto(av)   f    
-##  8 audi          1999 manual(m5) 4    
-##  9 audi          1999 auto(l5)   4    
-## 10 audi          2008 manual(m6) 4    
-## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Extract columns that end with letter &quot;y&quot;</span></span>
-<span id="cb55-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">ends_with</span>(<span class="st">&quot;y&quot;</span>))</span></code></pre></div>
-<pre><code>## # A tibble: 234 × 2
-##      cty   hwy
-##    &lt;int&gt; &lt;int&gt;
-##  1    18    29
-##  2    21    29
-##  3    20    31
-##  4    21    30
-##  5    16    26
-##  6    18    26
-##  7    18    27
-##  8    18    26
-##  9    16    25
-## 10    20    28
-## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Select column by columns index</span></span>
-<span id="cb57-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)      <span class="co"># first three columns</span></span></code></pre></div>
-<pre><code>## # A tibble: 234 × 3
-##    manufacturer model      displ
-##    &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt;
-##  1 audi         a4           1.8
-##  2 audi         a4           1.8
-##  3 audi         a4           2  
-##  4 audi         a4           2  
-##  5 audi         a4           2.8
-##  6 audi         a4           2.8
-##  7 audi         a4           3.1
-##  8 audi         a4 quattro   1.8
-##  9 audi         a4 quattro   1.8
-## 10 audi         a4 quattro   2  
-## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>)) <span class="co"># second, fifth and seventh column</span></span></code></pre></div>
-<pre><code>## # A tibble: 234 × 3
-##    model        cyl drv  
-##    &lt;chr&gt;      &lt;int&gt; &lt;chr&gt;
-##  1 a4             4 f    
-##  2 a4             4 f    
-##  3 a4             4 f    
-##  4 a4             4 f    
-##  5 a4             6 f    
-##  6 a4             6 f    
-##  7 a4             6 f    
-##  8 a4 quattro     4 4    
-##  9 a4 quattro     4 4    
-## 10 a4 quattro     4 4    
-## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df, (<span class="fu">ncol</span>(df)<span class="sc">-</span><span class="dv">2</span>)<span class="sc">:</span><span class="fu">ncol</span>(df)) <span class="co"># last three columns</span></span></code></pre></div>
-<pre><code>## # A tibble: 234 × 3
-##      hwy fl    class  
-##    &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
-##  1    29 p     compact
-##  2    29 p     compact
-##  3    31 p     compact
-##  4    30 p     compact
-##  5    26 p     compact
-##  6    26 p     compact
-##  7    27 p     compact
-##  8    26 p     compact
-##  9    25 p     compact
-## 10    28 p     compact
-## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rename() - Rename columns</span></span>
-<span id="cb63-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb63-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   Rename columns &quot;manufacturer&quot; and &quot;model&quot;</span></span>
-<span id="cb63-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb63-4" aria-hidden="true" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">rename</span>(df, </span>
-<span id="cb63-5"><a href="tidyverse-essentials-dplyr-tidyr.html#cb63-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">mnfc =</span> manufacturer,</span>
-<span id="cb63-6"><a href="tidyverse-essentials-dplyr-tidyr.html#cb63-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">mod =</span> model)</span>
-<span id="cb63-7"><a href="tidyverse-essentials-dplyr-tidyr.html#cb63-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-8"><a href="tidyverse-essentials-dplyr-tidyr.html#cb63-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb63-9"><a href="tidyverse-essentials-dplyr-tidyr.html#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="co"># select columns and rename in one take</span></span>
-<span id="cb63-10"><a href="tidyverse-essentials-dplyr-tidyr.html#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(df,</span>
-<span id="cb63-11"><a href="tidyverse-essentials-dplyr-tidyr.html#cb63-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">mnfc =</span> manufacturer,</span>
-<span id="cb63-12"><a href="tidyverse-essentials-dplyr-tidyr.html#cb63-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">mod =</span> model,</span>
-<span id="cb63-13"><a href="tidyverse-essentials-dplyr-tidyr.html#cb63-13" aria-hidden="true" tabindex="-1"></a>       <span class="fu">everything</span>()) <span class="co"># selects all other columns</span></span></code></pre></div>
-<pre><code>## # A tibble: 234 × 11
-##    mnfc  mod        displ  year   cyl trans      drv     cty   hwy fl    class  
-##    &lt;chr&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;  
-##  1 audi  a4           1.8  1999     4 auto(l5)   f        18    29 p     compact
-##  2 audi  a4           1.8  1999     4 manual(m5) f        21    29 p     compact
-##  3 audi  a4           2    2008     4 manual(m6) f        20    31 p     compact
-##  4 audi  a4           2    2008     4 auto(av)   f        21    30 p     compact
-##  5 audi  a4           2.8  1999     6 auto(l5)   f        16    26 p     compact
-##  6 audi  a4           2.8  1999     6 manual(m5) f        18    26 p     compact
-##  7 audi  a4           3.1  2008     6 auto(av)   f        18    27 p     compact
-##  8 audi  a4 quattro   1.8  1999     4 manual(m5) 4        18    26 p     compact
-##  9 audi  a4 quattro   1.8  1999     4 auto(l5)   4        16    25 p     compact
-## 10 audi  a4 quattro   2    2008     4 manual(m6) 4        20    28 p     compact
-## # … with 224 more rows</code></pre>
 </div>
-<div id="mutate" class="section level2 hasAnchor" number="2.5">
-<h2><span class="header-section-number">2.5</span> mutate()<a href="tidyverse-essentials-dplyr-tidyr.html#mutate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="mutate" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> mutate()<a href="tidyverse-essentials-dplyr-tidyr.html#mutate" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Create new variable</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Create variable: average between highway and city miles per gallon</span></span>
-<span id="cb65-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb65-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df,</span>
-<span id="cb65-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb65-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">`</span><span class="at">avg miles per gallon</span><span class="st">`</span> <span class="ot">=</span> (cty <span class="sc">+</span> hwy) <span class="sc">/</span> <span class="dv">2</span>)</span>
-<span id="cb65-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb65-4" aria-hidden="true" tabindex="-1"></a>df<span class="co">#YO</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Create variable: average between highway and city miles per gallon</span></span>
+<span id="cb34-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb34-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df,</span>
+<span id="cb34-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb34-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">`</span><span class="at">avg miles per gallon</span><span class="st">`</span> <span class="ot">=</span> (cty <span class="sc">+</span> hwy) <span class="sc">/</span> <span class="dv">2</span>)</span>
+<span id="cb34-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb34-4" aria-hidden="true" tabindex="-1"></a>df<span class="co">#YO</span></span></code></pre></div>
 <pre><code>## # A tibble: 234 × 12
 ##    manufac…¹ model displ  year   cyl trans drv     cty   hwy fl    class avg m…²
 ##    &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;
@@ -703,11 +491,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10 audi      a4 q…   2    2008     4 manu… 4        20    28 p     comp…    24  
 ## # … with 224 more rows, and abbreviated variable names ¹​manufacturer,
 ## #   ²​`avg miles per gallon`</code></pre>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Create variable &quot;car&quot; &amp; &quot;cyl / trans&quot;</span></span>
-<span id="cb67-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb67-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df,</span>
-<span id="cb67-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb67-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">car =</span> <span class="fu">paste</span>(manufacturer, model, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>),</span>
-<span id="cb67-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb67-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">`</span><span class="at">cyl / trans</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste</span>(cyl, <span class="st">&quot; cylinders&quot;</span>, <span class="st">&quot; / &quot;</span>, trans, <span class="st">&quot; transmission&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span>
-<span id="cb67-5"><a href="tidyverse-essentials-dplyr-tidyr.html#cb67-5" aria-hidden="true" tabindex="-1"></a>df<span class="co">#YO</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#   Create variable &quot;car&quot; &amp; &quot;cyl / trans&quot;</span></span>
+<span id="cb36-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb36-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">mutate</span>(df,</span>
+<span id="cb36-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb36-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">car =</span> <span class="fu">paste</span>(manufacturer, model, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>),</span>
+<span id="cb36-4"><a href="tidyverse-essentials-dplyr-tidyr.html#cb36-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">`</span><span class="at">cyl / trans</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste</span>(cyl, <span class="st">&quot; cylinders&quot;</span>, <span class="st">&quot; / &quot;</span>, trans, <span class="st">&quot; transmission&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span>
+<span id="cb36-5"><a href="tidyverse-essentials-dplyr-tidyr.html#cb36-5" aria-hidden="true" tabindex="-1"></a>df<span class="co">#YO</span></span></code></pre></div>
 <pre><code>## # A tibble: 234 × 14
 ##    manufac…¹ model displ  year   cyl trans drv     cty   hwy fl    class avg m…²
 ##    &lt;chr&gt;     &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt;
@@ -724,11 +512,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## # … with 224 more rows, 2 more variables: car &lt;chr&gt;, `cyl / trans` &lt;chr&gt;, and
 ## #   abbreviated variable names ¹​manufacturer, ²​`avg miles per gallon`</code></pre>
 </div>
-<div id="transmute" class="section level2 hasAnchor" number="2.6">
-<h2><span class="header-section-number">2.6</span> transmute()<a href="tidyverse-essentials-dplyr-tidyr.html#transmute" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="transmute" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> transmute()<a href="tidyverse-essentials-dplyr-tidyr.html#transmute" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Create new variable and drop other variables</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">transmute</span>(df,</span>
-<span id="cb69-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb69-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">`</span><span class="at">avg miles per gallon</span><span class="st">`</span> <span class="ot">=</span> (cty <span class="sc">+</span> hwy) <span class="sc">/</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">transmute</span>(df,</span>
+<span id="cb38-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb38-2" aria-hidden="true" tabindex="-1"></a>          <span class="st">`</span><span class="at">avg miles per gallon</span><span class="st">`</span> <span class="ot">=</span> (cty <span class="sc">+</span> hwy) <span class="sc">/</span> <span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 234 × 1
 ##    `avg miles per gallon`
 ##                     &lt;dbl&gt;
@@ -743,9 +531,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  9                   20.5
 ## 10                   24  
 ## # … with 224 more rows</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">transmute</span>(df,</span>
-<span id="cb71-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb71-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">car =</span> <span class="fu">paste</span>(manufacturer, model, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>),</span>
-<span id="cb71-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb71-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">`</span><span class="at">cyl / trans</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste</span>(cyl, <span class="st">&quot; cylinders&quot;</span>, <span class="st">&quot; / &quot;</span>, trans, <span class="st">&quot; transmission&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="tidyverse-essentials-dplyr-tidyr.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">transmute</span>(df,</span>
+<span id="cb40-2"><a href="tidyverse-essentials-dplyr-tidyr.html#cb40-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">car =</span> <span class="fu">paste</span>(manufacturer, model, <span class="at">sep =</span> <span class="st">&quot; &quot;</span>),</span>
+<span id="cb40-3"><a href="tidyverse-essentials-dplyr-tidyr.html#cb40-3" aria-hidden="true" tabindex="-1"></a>          <span class="st">`</span><span class="at">cyl / trans</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste</span>(cyl, <span class="st">&quot; cylinders&quot;</span>, <span class="st">&quot; / &quot;</span>, trans, <span class="st">&quot; transmission&quot;</span>, <span class="at">sep =</span> <span class="st">&quot;&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 234 × 2
 ##    car             `cyl / trans`                        
 ##    &lt;chr&gt;           &lt;chr&gt;                                

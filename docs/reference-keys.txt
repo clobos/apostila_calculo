@@ -1,8 +1,9 @@
-introdução-ao-dplyr-e-ggplot2
+alguns-atalhos-no-rstudio
 tidyverse-essentials-dplyr-tidyr
-inspect-data
-select---columns-selection
-rename-columns-manufacturer-and-model
+carrega-alguns-pacotes-a-serem-usados
+descrição-dos-dados-mpg
+select
+rename
 yo-hice-todo-lo-que-está-abajo
 mutate
 transmute

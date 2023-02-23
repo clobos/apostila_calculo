@@ -19,4 +19,12 @@ knitr::opts_chunk$set(echo = TRUE,
                       warning = FALSE)
 ```
 
-# Introdução ao dplyr e ggplot2
+# Alguns atalhos no Rstudio
+
+Para considerar
+
+  > Preview HTML	Ctrl+Shift+K	Command+Shift+K (R Markdown)
+
+  > %>% is Ctrl + Shift + M (Windows) or Cmd + Shift + M (Mac).
+
+  > You can quickly insert chunks into your R Markdown file with the keyboard shortcut Cmd + Option + I (Windows Ctrl + Alt + I).
